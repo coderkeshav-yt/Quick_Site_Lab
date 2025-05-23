@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { firebase, db } from '../../firebase/firebaseConfig.js';
 import { FiArrowRight, FiArrowLeft, FiCheck, FiMail, FiPhone, FiUser, FiFileText, FiCalendar, FiDollarSign, FiBriefcase, FiMonitor, FiAlertCircle, FiFlag, FiBarChart2, FiClock, FiLayers, FiLayout, FiSmartphone, FiCode, FiInfo, FiShoppingBag, FiMessageCircle, FiServer, FiCpu, FiArchive, FiDatabase, FiGlobe, FiHome, FiHelpCircle, FiPackage, FiGrid, FiUpload, FiSend, FiTarget, FiBook, FiPieChart } from 'react-icons/fi';
 
 // Form values interface
@@ -476,10 +477,10 @@ interface BudgetRangeProps {
 
 const BudgetRange: React.FC<BudgetRangeProps> = ({ selected, onChange }) => {
   const budgetRanges = [
-    { value: "$1,000 - $5,000", label: "$1K - $5K" },
-    { value: "$5,000 - $10,000", label: "$5K - $10K" },
-    { value: "$10,000 - $25,000", label: "$10K - $25K" },
-    { value: "$25,000+", label: "$25K+" }
+    { value: "₹1,000 - ₹5,000", label: "₹1K - ₹5K" },
+    { value: "₹5,000 - ₹10,000", label: "₹5K - ₹10K" },
+    { value: "₹10,000 - ₹25,000", label: "₹10K - ₹25K" },
+    { value: "₹25,000+", label: "₹25K+" }
   ];
   
   return (
@@ -588,12 +589,13 @@ const validateForm = (values: FormValues, step: number): FormErrors => {
   return errors;
 };
 
-// Main form component
 const GetStartedForm: React.FC = () => {
   // State for managing form steps
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const totalSteps = 4; // Total number of steps in the form
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const totalSteps = 3; // Total number of steps in the form
   
   // State for form values and errors
   const [formValues, setFormValues] = useState<FormValues>({
@@ -647,42 +649,46 @@ const GetStartedForm: React.FC = () => {
   };
   
   // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    handleNextStep();
+  };
+  
+  // Function to submit form data to Firebase
+  const submitFormToFirebase = async () => {
+    setIsSubmitting(true);
+    setSubmitError('');
     
-    // Validate form
-    const stepErrors = validateForm(formValues, currentStep);
-    setFormErrors(stepErrors);
-    
-    // Mark all fields as touched
-    const allTouched: Record<string, boolean> = {};
-    Object.keys(formValues).forEach(key => {
-      allTouched[key] = true;
-    });
-    setTouched(allTouched);
-    
-    // If there are no errors, submit form or go to next step
-    if (Object.keys(stepErrors).length === 0) {
-      if (currentStep < totalSteps - 1) {
-        // Go to next step if not on the last step
-        setCurrentStep(currentStep + 1);
-      } else {
-        // Submit form if on the last step
-        setIsSubmitting(true);
-        
-        try {
-          // Simulate API call with a delay
-          await new Promise(resolve => setTimeout(resolve, 1500));
-          console.log('Form submitted successfully', formValues);
-          
-          // Move to the confirmation step
-          setCurrentStep(3);
-        } catch (error) {
-          console.error('Error submitting form:', error);
-        } finally {
-          setIsSubmitting(false);
-        }
-      }
+    try {
+      // Create a simple object with the form data
+      const projectData = {
+        fullName: formValues.fullName,
+        email: formValues.email,
+        phone: formValues.phone,
+        companyName: formValues.companyName,
+        projectType: formValues.projectType,
+        projectDescription: formValues.projectDescription,
+        budget: formValues.budget,
+        timeline: formValues.timeline,
+        additionalInfo: formValues.additionalInfo,
+        timestamp: new Date(),
+        createdAt: new Date().toISOString() // Add a string timestamp for easier debugging
+      };
+      
+      console.log('GET STARTED FORM: Preparing to submit data:', projectData);
+      
+      // Direct approach with await to ensure completion
+      const docRef = await db.collection('projectRequests').add(projectData);
+      
+      console.log('GET STARTED FORM: Document successfully written with ID:', docRef.id);
+      
+      // Set success state
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+    } catch (error) {
+      console.error('GET STARTED FORM ERROR:', error);
+      setIsSubmitting(false);
+      setSubmitError('There was an error submitting your request. Please try again.');
     }
   };
   
@@ -1013,8 +1019,105 @@ const GetStartedForm: React.FC = () => {
               </motion.div>
             )}
             
-            {/* Step 4: Confirmation */}
-            {currentStep === 3 && (
+            {/* Step 3: Final Preview & Submit */}
+            {currentStep === 2 && (
+              <motion.div
+                variants={formVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="space-y-8 text-center"
+              >
+                {submitError && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4 flex items-start">
+                    <FiAlertCircle className="mr-2 mt-0.5" />
+                    <span>{submitError}</span>
+                  </div>
+                )}
+                
+                <div className="text-center mb-6">
+                  <h2 className="text-2xl font-bold text-indigo-900 font-['Rubik']">Review Your Information</h2>
+                  <p className="text-indigo-700 mt-2">Please review your information below before submitting.</p>
+                </div>
+                
+                <div className="bg-indigo-50 rounded-xl p-6 border border-indigo-100">
+                  <h3 className="text-lg font-bold text-indigo-900 mb-4 font-['Rubik']">Your Request Summary</h3>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <p className="text-sm text-indigo-400">Name</p>
+                      <p className="font-medium text-indigo-900">{formValues.fullName}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-indigo-400">Email</p>
+                      <p className="font-medium text-indigo-900">{formValues.email}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-indigo-400">Phone</p>
+                      <p className="font-medium text-indigo-900">{formValues.phone}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-indigo-400">Company</p>
+                      <p className="font-medium text-indigo-900">{formValues.companyName || 'Not provided'}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <p className="text-sm text-indigo-400">Project Type</p>
+                    <p className="font-medium text-indigo-900">{formValues.projectType}</p>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <p className="text-sm text-indigo-400">Project Description</p>
+                    <p className="font-medium text-indigo-900">{formValues.projectDescription}</p>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <p className="text-sm text-indigo-400">Budget</p>
+                    <p className="font-medium text-indigo-900">{formValues.budget}</p>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <p className="text-sm text-indigo-400">Timeline</p>
+                    <p className="font-medium text-indigo-900">{formValues.timeline}</p>
+                  </div>
+                </div>
+                
+                <div className="pt-6 flex justify-between">
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-6 py-3 border-2 border-indigo-500/30 text-base font-medium rounded-xl text-indigo-700 bg-transparent hover:bg-indigo-50 hover:border-indigo-500/50 transition-all duration-300 font-['Rubik']"
+                    onClick={handlePrevStep}
+                  >
+                    Back
+                  </button>
+                  
+                  <button
+                    type="button"
+                    onClick={submitFormToFirebase}
+                    className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-lg hover:shadow-purple-500/30 transition-all duration-300 font-['Rubik']"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center">
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Submitting...
+                      </span>
+                    ) : (
+                      <span className="flex items-center">
+                        Submit & Send
+                        <FiSend className="ml-2" />
+                      </span>
+                    )}
+                  </button>
+                </div>
+              </motion.div>
+            )}
+            {/* Success State */}
+            {currentStep === 3 && submitSuccess && (
               <motion.div
                 variants={formVariants}
                 initial="hidden"
@@ -1027,7 +1130,7 @@ const GetStartedForm: React.FC = () => {
                     <FiCheck size={40} className="text-green-500" />
                   </div>
                   <h2 className="text-2xl font-bold text-indigo-900 font-['Rubik']">Thank You!</h2>
-                  <p className="text-indigo-700 mt-2">We've received your information and will contact you shortly.</p>
+                  <p className="text-indigo-700 mt-2">We've received your project request and will contact you shortly.</p>
                 </div>
                 
                 <div className="bg-indigo-50 rounded-xl p-6 border border-indigo-100">
@@ -1063,25 +1166,7 @@ const GetStartedForm: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="bg-indigo-50 p-6 rounded-xl max-w-lg mx-auto">
-                  <h3 className="text-xl font-bold text-indigo-800 mb-4 font-['Rubik']">What Happens Next?</h3>
-                  <ol className="text-left space-y-4 text-gray-700">
-                    <li className="flex items-start">
-                      <div className="mr-3 mt-1 bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold">1</div>
-                      <div>Our team will review your requirements</div>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="mr-3 mt-1 bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold">2</div>
-                      <div>We'll contact you to schedule an initial consultation</div>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="mr-3 mt-1 bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold">3</div>
-                      <div>We'll provide a proposal and timeline for your project</div>
-                    </li>
-                  </ol>
-                </div>
-                
-                <div className="pt-6">
+                <div className="pt-6 flex justify-center">
                   <a 
                     href="/" 
                     className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-lg hover:shadow-purple-500/30 transition-all duration-300 font-['Rubik']"

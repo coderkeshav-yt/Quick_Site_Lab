@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin, FiSend, FiCheck, FiArrowRight, FiGlobe, FiClock } from 'react-icons/fi';
+import { FiMail, FiPhone, FiMapPin, FiSend, FiCheck, FiArrowRight, FiGlobe, FiClock, FiAlertCircle } from 'react-icons/fi';
+import { firebase, db } from '../../firebase/firebaseConfig.js';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -34,14 +35,36 @@ const ContactSection: React.FC = () => {
     setFocusedField(null);
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError('');
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Create a simple object with the form data
+      const contactData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+        company: formData.company,
+        timestamp: new Date(),
+        createdAt: new Date().toISOString() // Add a string timestamp for easier debugging
+      };
+      
+      console.log('CONTACT FORM: Preparing to submit data:', contactData);
+      
+      // Direct approach with await to ensure completion
+      const docRef = await db.collection('contactSubmissions').add(contactData);
+      
+      console.log('CONTACT FORM: Document successfully written with ID:', docRef.id);
+      
+      // Set success state
       setIsSubmitting(false);
       setSubmitSuccess(true);
+      
+      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -55,7 +78,13 @@ const ContactSection: React.FC = () => {
       setTimeout(() => {
         setSubmitSuccess(false);
       }, 5000);
-    }, 1500);
+      
+    } catch (error) {
+      console.error('CONTACT FORM ERROR:', error);
+      setIsSubmitting(false);
+      setSubmitError('There was an error submitting your message. Please try again.');
+    }
+  
   };
   
   const nextStep = () => {
