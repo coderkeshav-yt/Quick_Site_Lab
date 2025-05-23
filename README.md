@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Quick Site Lab - Web Development Agency Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive website for a web development agency built with React, TypeScript, and Tailwind CSS. This project showcases a professional website with multiple sections including a hero banner, services, portfolio, testimonials, blog, and contact form.
 
 ## Available Scripts
 
