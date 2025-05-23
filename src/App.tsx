@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -15,15 +15,15 @@ function App() {
   return (
     <Router>
       <Layout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/get-started" element={<GetStartedPage />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
-        </Routes>
+        <div>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/about" component={AboutPage} />
+          <Route path="/get-started" component={GetStartedPage} />
+          <Route path="/portfolio" component={Portfolio} />
+          <Route path="/contact" component={ContactPage} />
+          <Route path="/services" exact component={ServicesPage} />
+          <Route path="/services/:serviceId" component={ServiceDetailPage} />
+        </div>
       </Layout>
     </Router>
   );

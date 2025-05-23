@@ -195,11 +195,11 @@ const ContactPage: React.FC = () => {
               </div>
               <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg flex items-center gap-3 text-white">
                 <FiPhone className="text-purple-300 text-xl" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 9876543210</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg flex items-center gap-3 text-white">
                 <FiMapPin className="text-purple-300 text-xl" />
-                <span>San Francisco, CA</span>
+                <span>New Delhi, India</span>
               </div>
             </motion.div>
           </motion.div>
@@ -385,7 +385,7 @@ const ContactPage: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 text-lg mb-1">Our Location</h3>
-                  <p className="text-gray-600">123 Innovation Street, San Francisco, CA 94103, United States</p>
+                  <p className="text-gray-600">New Delhi, India ,110005</p>
                 </div>
               </motion.div>
               
