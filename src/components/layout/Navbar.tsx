@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -114,22 +115,28 @@ const Navbar: React.FC = () => {
               </div>
             
               {/* Mobile menu button */}
-              <div className="flex items-center md:hidden">
-                <button
+              <div className="flex md:hidden">
+                <motion.button
                   onClick={toggleMenu}
-                  className="inline-flex items-center justify-center p-2 rounded-full text-gray-800 hover:bg-white/20 focus:outline-none transition-all duration-300"
+                  className="inline-flex items-center justify-center p-2.5 rounded-full bg-white/90 backdrop-blur-sm shadow-lg hover:shadow-xl hover:bg-white transition-all duration-300 border-2 border-indigo-100"
+                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.1 }}
+                  initial={{ opacity: 0.9 }}
+                  animate={{ opacity: 1 }}
                 >
                   <span className="sr-only">Open main menu</span>
-                  {isMenuOpen ? (
-                    <span className="block h-6 w-6 text-primary">
-                      <FiX className="stroke-2" aria-hidden="true" />
-                    </span>
-                  ) : (
-                    <span className="block h-6 w-6">
-                      <FiMenu className="stroke-2" aria-hidden="true" />
-                    </span>
-                  )}
-                </button>
+                  <motion.div
+                    animate={{ rotate: isMenuOpen ? 90 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-indigo-600 h-6 w-6 flex items-center justify-center"
+                  >
+                    {isMenuOpen ? (
+                      <FiX className="stroke-2" size={24} aria-hidden="true" />
+                    ) : (
+                      <FiMenu className="stroke-2" size={24} aria-hidden="true" />
+                    )}
+                  </motion.div>
+                </motion.button>
               </div>
             </div>
           </div>
@@ -137,9 +144,20 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile menu, show/hide based on menu state */}
+      <AnimatePresence>
       {isMenuOpen && (
-        <div className="md:hidden fixed top-24 inset-x-4 z-50">
-          <div className="bg-white/95 backdrop-blur-md shadow-xl rounded-2xl overflow-hidden transition-all duration-300 border border-gray-100">
+        <motion.div 
+          className="md:hidden fixed top-24 inset-x-4 z-50"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div 
+            className="bg-white/95 backdrop-blur-md shadow-xl rounded-2xl overflow-hidden border border-gray-100"
+            initial={{ scale: 0.95 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.2, delay: 0.1 }}>
             <div className="pt-4 pb-5 space-y-2 px-6">
               <Link
                 to="/"
@@ -213,9 +231,10 @@ const Navbar: React.FC = () => {
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </>
   );
 };
