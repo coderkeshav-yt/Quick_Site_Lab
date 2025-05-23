@@ -98,7 +98,7 @@ export const servicesData: ServiceDetail[] = [
     packages: [
       {
         name: 'Starter',
-        price: '$4,999',
+        price: '₹10,000',
         description: 'Perfect for small businesses looking to establish an online presence',
         features: [
           'Responsive website (up to 5 pages)',
@@ -112,7 +112,7 @@ export const servicesData: ServiceDetail[] = [
       },
       {
         name: 'Professional',
-        price: '$9,999',
+        price: '₹20,000',
         description: 'Comprehensive solution for growing businesses with advanced needs',
         features: [
           'Responsive website (up to 10 pages)',
@@ -258,7 +258,7 @@ export const servicesData: ServiceDetail[] = [
     packages: [
       {
         name: 'Essentials',
-        price: '$3,999',
+        price: '₹5,000',
         description: 'Perfect for startups and small businesses looking to improve their digital presence',
         features: [
           'User persona development',
@@ -271,7 +271,7 @@ export const servicesData: ServiceDetail[] = [
       },
       {
         name: 'Premium',
-        price: '$7,999',
+        price: '₹10,000',
         description: 'Comprehensive solution for businesses seeking a complete design overhaul',
         features: [
           'User research and journey mapping',
