@@ -12,7 +12,7 @@ const HeroSection: React.FC = () => {
           <div 
             className="absolute inset-0" 
             style={{
-              backgroundImage: 'url("https://res.cloudinary.com/dlvxjnycr/image/upload/v1747909355/bunnynet-the-best-content-delivery-network-cdn_hsz9og.webp")',
+              backgroundImage: 'url("https://res.cloudinary.com/dlvxjnycr/image/upload/v1747909355/bunnynet-the-best-content-delivery-network-cdn_hsz9og.jpg")',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'

@@ -1,0 +1,3 @@
+This is a placeholder for the portfolio-template.zip file.
+
+In a production environment, this would be an actual ZIP file containing the source code for the portfolio template.

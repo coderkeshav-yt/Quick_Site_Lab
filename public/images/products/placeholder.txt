@@ -1,0 +1,6 @@
+This directory will contain product images for the source code packages.
+
+In a production environment, you would replace this with actual product images named:
+- portfolio-template.jpg
+- ecommerce-starter.jpg
+- blog-platform.jpg
