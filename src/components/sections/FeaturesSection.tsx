@@ -12,47 +12,59 @@ interface FeatureCardProps {
 }
 
 // Custom images for each service with reliable URLs
-const ServiceIllustrations = {
-  WebDevelopment: () => (
+const ServiceIllustrations: { [key: string]: () => JSX.Element } = {
+  webdevelopment: () => (
     <img 
-      src="https://img.freepik.com/free-vector/web-development-programmer-engineering-coding-website-augmented-reality-interface-screens-developer-project-engineer-programming-software-application-design-cartoon-illustration_107791-3863.jpg" 
+      key="web-dev"
+      src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1749549190/web_dev_pic_hbik6q.jpg"
       alt="Web Development" 
-      className="w-full h-auto max-h-64 object-contain rounded-lg"
+      className="w-full h-48 object-cover rounded-lg"
+      onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x400/2563eb/white?text=Web+Dev')}
     />
   ),
-  UiUxDesign: () => (
+  uiuxdesign: () => (
     <img 
-      src="https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149052117.jpg" 
+      key="ui-ux"
+      src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1749564919/a855f7_gm6glw.jpg"
       alt="UI/UX Design" 
-      className="w-full h-auto max-h-64 object-contain rounded-lg"
+      className="w-full h-48 object-cover rounded-lg"
+      onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x400/7c3aed/white?text=UI%2FUX+Design')}
     />
   ),
-  MobileDevelopment: () => (
+  mobiledevelopment: () => (
     <img 
-      src="https://img.freepik.com/free-vector/app-development-illustration_52683-47931.jpg" 
+      key="mobile-dev"
+      src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1749551903/app_dev_fv8wuq.jpg"
       alt="Mobile Development" 
-      className="w-full h-auto max-h-64 object-contain rounded-lg"
+      className="w-full h-48 object-cover rounded-lg"
+      onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x400/059669/white?text=Mobile+Dev')}
     />
   ),
-  DigitalMarketing: () => (
+  digitalmarketing: () => (
     <img 
-      src="https://img.freepik.com/free-vector/digital-marketing-concept-illustration_114360-7638.jpg" 
+      key="digital-mkt"
+      src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1749564452/Untitled_design_ub6zy0.jpg"
       alt="Digital Marketing" 
-      className="w-full h-auto max-h-64 object-contain rounded-lg"
+      className="w-full h-48 object-cover rounded-lg"
+      onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x400/d97706/white?text=Marketing')}
     />
   ),
-  SeoOptimization: () => (
+  seooptimization: () => (
     <img 
-      src="https://img.freepik.com/free-vector/seo-analytics-team-concept-illustration_114360-9205.jpg" 
+      key="seo-opt"
+      src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1749566396/a855f7_1_ubgpd6.jpg"
       alt="SEO Optimization" 
-      className="w-full h-auto max-h-64 object-contain rounded-lg"
+      className="w-full h-48 object-cover rounded-lg"
+      onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x400/2563eb/white?text=SEO+Image+Not+Found')}
     />
   ),
-  WebsiteMaintenance: () => (
+  websitemaintenance: () => (
     <img 
-      src="https://img.freepik.com/free-vector/website-maintenance-abstract-concept-illustration_335657-3689.jpg" 
+      key="maintenance"
+      src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1749551908/maintance_qrhzr8.jpg"
       alt="Website Maintenance" 
-      className="w-full h-auto max-h-64 object-contain rounded-lg"
+      className="w-full h-48 object-cover rounded-lg"
+      onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x400/6b7280/white?text=Maintenance')}
     />
   )
 };
@@ -60,12 +72,13 @@ const ServiceIllustrations = {
 const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, delay, index }) => {
   // Get the appropriate illustration based on the title
   const getIllustration = (title: string) => {
-    const key = title.replace(/\s+/g, '') as keyof typeof ServiceIllustrations;
+    // Normalize: lowercase and remove all non-alphanumeric characters
+    const key = title.toLowerCase().replace(/[^a-z0-9]/g, '');
     if (ServiceIllustrations[key]) {
       return ServiceIllustrations[key];
     }
-    // Fallback to WebDevelopment illustration if no match found
-    return ServiceIllustrations.WebDevelopment;
+    // Fallback to webdevelopment illustration if no match found
+    return ServiceIllustrations.webdevelopment;
   };
   
   // Create alternating gradient styles for cards
