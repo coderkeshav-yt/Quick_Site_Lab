@@ -187,7 +187,7 @@ const Navbar: React.FC = () => {
                 <Link to="/" className="flex-shrink-0 flex items-center hover:opacity-90 transition-opacity duration-200">
                   <img
                     className="h-12 w-12 rounded-full object-cover border-2 border-white shadow-md"
-                    src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/a-logo-design-featuring-the-text-quicksi_CifZevJ7Sammm7AHdhV0Sw_SyfaagIaQPK5czYYfc-VCQ_iwzml0.jpg"
+                    src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1749544080/cybrida_logo_gzt8hj.png"
                     alt="Cybrida"
                   />
                 </Link>
@@ -404,7 +404,7 @@ const Navbar: React.FC = () => {
                   <Link to="/" className="flex-shrink-0" onClick={toggleMenu}>
                     <img
                       className="h-12 w-12 rounded-full object-cover border-2 border-white shadow-md"
-                      src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/a-logo-design-featuring-the-text-quicksi_CifZevJ7Sammm7AHdhV0Sw_SyfaagIaQPK5czYYfc-VCQ_iwzml0.jpg"
+                      src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1749544080/cybrida_logo_gzt8hj.png"
                       alt="Cybrida"
                     />
                   </Link>
@@ -555,3 +555,5 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
+
