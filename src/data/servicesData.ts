@@ -170,21 +170,21 @@ export const servicesData: ServiceDetail[] = [
       {
         name: 'Michael Thompson',
         company: 'Innovate Solutions',
-        quote: 'The web application Quick Site Lab developed for us has transformed our business operations. Their attention to detail and technical expertise is unmatched.',
+        quote: 'The web application Cybrida developed for us has transformed our business operations. Their attention to detail and technical expertise is unmatched.',
         image: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/person1_nwpkux.jpg',
         rating: 5
       },
       {
         name: 'Sarah Johnson',
         company: 'EcoGreen Products',
-        quote: 'Our e-commerce website has seen a 40% increase in conversions since Quick Site Lab redesigned it. Their focus on user experience really paid off!',
+        quote: 'Our e-commerce website has seen a 40% increase in conversions since Cybrida redesigned it. Their focus on user experience really paid off!',
         image: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/person2_asmxdw.jpg',
         rating: 5
       },
       {
         name: 'David Chen',
         company: 'TechStart Inc.',
-        quote: 'Working with Quick Site Lab was seamless from start to finish. They delivered our complex web application ahead of schedule and under budget.',
+        quote: 'Working with Cybrida was seamless from start to finish. They delivered our complex web application ahead of schedule and under budget.',
         image: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/person3_eujfgh.jpg',
         rating: 4
       }
@@ -322,14 +322,14 @@ export const servicesData: ServiceDetail[] = [
       {
         name: 'Emily Rodriguez',
         company: 'HealthTech Solutions',
-        quote: 'Quick Site Lab completely transformed our healthcare application with their thoughtful UI/UX design. Patient engagement increased by 60% following the redesign.',
+        quote: 'Cybrida completely transformed our healthcare application with their thoughtful UI/UX design. Patient engagement increased by 60% following the redesign.',
         image: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/person4_sfkdju.jpg',
         rating: 5
       },
       {
         name: 'Jason Kim',
         company: 'FinEdge',
-        quote: 'The design system Quick Site Lab created for our fintech platform has streamlined our development process and created a consistent experience across all our products.',
+        quote: 'The design system Cybrida created for our fintech platform has streamlined our development process and created a consistent experience across all our products.',
         image: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/person5_rtkigv.jpg',
         rating: 5
       }
@@ -469,14 +469,14 @@ export const servicesData: ServiceDetail[] = [
       {
         name: 'Robert Chang',
         company: 'FitLife',
-        quote: 'The fitness app Quick Site Lab built for us has over 100,000 downloads and maintains a 4.8-star rating. Their attention to user experience made all the difference.',
+        quote: 'The fitness app Cybrida built for us has over 100,000 downloads and maintains a 4.8-star rating. Their attention to user experience made all the difference.',
         image: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/person7_uydvjh.jpg',
         rating: 5
       },
       {
         name: 'Priya Sharma',
         company: 'QuickDelivery',
-        quote: 'Our delivery app needed to work flawlessly across multiple platforms. Quick Site Lab delivered a solution that exceeded our expectations and scaled with our rapid growth.',
+        quote: 'Our delivery app needed to work flawlessly across multiple platforms. Cybrida delivered a solution that exceeded our expectations and scaled with our rapid growth.',
         image: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/person8_lsfdku.jpg',
         rating: 5
       }

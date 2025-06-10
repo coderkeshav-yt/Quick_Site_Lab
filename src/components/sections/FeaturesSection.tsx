@@ -186,7 +186,7 @@ const FeaturesSection: React.FC = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
           >
-            Services & Solutions at <span className="text-primary">Quick Site Lab</span>
+            Services & Solutions at <span className="text-primary">Cybrida</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}

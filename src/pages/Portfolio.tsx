@@ -255,7 +255,7 @@ const Portfolio: React.FC = () => {
       name: "Sarah Johnson",
       position: "CEO, TechVision Inc.",
       image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1716648342/testimonial-1_eac7dp.jpg",
-      content: "Quick Site Lab transformed our digital presence with their exceptional web design and development expertise. Their team's attention to detail and commitment to excellence is unmatched.",
+      content: "Cybrida transformed our digital presence with their exceptional web design and development expertise. Their team's attention to detail and commitment to excellence is unmatched.",
       rating: 5
     },
     {
@@ -263,7 +263,7 @@ const Portfolio: React.FC = () => {
       name: "Michael Chen",
       position: "Marketing Director, Elevate Brands",
       image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1716648342/testimonial-2_eifgzf.jpg",
-      content: "Working with Quick Site Lab was a game-changer for our e-commerce platform. Their development expertise and design sensibility helped us increase conversions by 40%.",
+      content: "Working with Cybrida was a game-changer for our e-commerce platform. Their development expertise and design sensibility helped us increase conversions by 40%.",
       rating: 5
     },
     {
@@ -271,7 +271,7 @@ const Portfolio: React.FC = () => {
       name: "Emily Rodriguez",
       position: "Product Manager, FinTech Solutions",
       image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1716648342/testimonial-3_hfdmxt.jpg",
-      content: "The team at Quick Site Lab brings both technical excellence and creative vision. They delivered our financial dashboard ahead of schedule and exceeded all expectations.",
+      content: "The team at Cybrida brings both technical excellence and creative vision. They delivered our financial dashboard ahead of schedule and exceeded all expectations.",
       rating: 5
     },
   ];

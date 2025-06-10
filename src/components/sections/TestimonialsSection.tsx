@@ -25,7 +25,7 @@ const TestimonialsSection: React.FC = () => {
       position: "CEO",
       company: "TechStart Inc.",
       image: testimonial1,
-      content: "Working with Quick Site Lab was a game-changer for our business. They completely transformed our online presence and helped us reach a wider audience. The team was professional, responsive, and delivered beyond our expectations.",
+      content: "Working with Cybrida was a game-changer for our business. They completely transformed our online presence and helped us reach a wider audience. The team was professional, responsive, and delivered beyond our expectations.",
       rating: 5
     },
     {
@@ -34,7 +34,7 @@ const TestimonialsSection: React.FC = () => {
       position: "Marketing Director",
       company: "GrowthBox",
       image: testimonial2,
-      content: "The Quick Site Lab team understood our vision from day one. They created a website that perfectly represents our brand and has significantly improved our conversion rates. I highly recommend their services!",
+      content: "The Cybrida team understood our vision from day one. They created a website that perfectly represents our brand and has significantly improved our conversion rates. I highly recommend their services!",
       rating: 5
     },
     {
@@ -43,7 +43,7 @@ const TestimonialsSection: React.FC = () => {
       position: "Founder",
       company: "Artisan Crafts",
       image: testimonial3,
-      content: "As a small business owner, I needed a website that would help me compete with larger companies. Quick Site Lab delivered exactly that - a beautiful, functional site that has helped my business grow exponentially.",
+      content: "As a small business owner, I needed a website that would help me compete with larger companies. Cybrida delivered exactly that - a beautiful, functional site that has helped my business grow exponentially.",
       rating: 5
     }
   ];
@@ -83,7 +83,7 @@ const TestimonialsSection: React.FC = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
           >
-            What Our Clients Say About <span className="text-primary">Quick Site Lab</span>
+            What Our Clients Say About <span className="text-primary">Cybrida</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -192,7 +192,7 @@ const TestimonialsSection: React.FC = () => {
           className="text-center relative z-10 mt-8"
         >
           <p className="text-lg text-gray-600 mb-6">
-            Join our growing list of satisfied clients and experience the Quick Site Lab difference.
+            Join our growing list of satisfied clients and experience the Cybrida difference.
           </p>
           <a 
             href="/contact" 

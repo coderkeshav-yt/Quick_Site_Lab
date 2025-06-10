@@ -122,7 +122,7 @@ const PortfolioSection: React.FC = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
           >
-            Recent Projects by <span className="text-primary">Quick Site Lab</span>
+            Recent Projects by <span className="text-primary">Cybrida</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}

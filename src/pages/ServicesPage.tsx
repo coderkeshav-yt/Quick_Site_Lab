@@ -37,7 +37,7 @@ const renderIcon = (iconName: string) => {
 const ServicesPage: React.FC = () => {
   // Set document title
   useEffect(() => {
-    document.title = 'Our Services | Quick Site Lab';
+    document.title = 'Our Services | Cybrida';
   }, []);
 
   // Scroll animations

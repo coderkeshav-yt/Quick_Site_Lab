@@ -137,8 +137,8 @@ const ContactPage: React.FC = () => {
   // FAQ items
   const faqItems = [
     {
-      question: 'What services does Quick Site Lab offer?',
-      answer: 'Quick Site Lab offers premium website design and development, mobile app development, brand identity design, and digital marketing solutions tailored to elevate your business presence.'
+      question: 'What services does Cybrida offer?',
+      answer: 'Cybrida offers premium website design and development, mobile app development, brand identity design, and digital marketing solutions tailored to elevate your business presence.'
     },
     {
       question: 'How long does it take to complete a project?',
@@ -153,7 +153,7 @@ const ContactPage: React.FC = () => {
       answer: 'Yes, we provide comprehensive post-launch support and maintenance packages to ensure your digital products remain secure, up-to-date, and performing optimally.'
     },
     {
-      question: 'How do we get started with Quick Site Lab?',
+      question: 'How do we get started with Cybrida ?',
       answer: 'Getting started is simple! Fill out the contact form on this page or schedule a consultation call. We\'ll discuss your requirements, provide recommendations, and outline the next steps for your project.'
     }
   ];
@@ -471,7 +471,7 @@ const ContactPage: React.FC = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to transform your digital presence?</h2>
             <p className="text-purple-100 text-lg mb-8 max-w-2xl mx-auto">
-              Partner with Quick Site Lab to create stunning digital experiences that engage your audience and grow your business.
+              Partner with Cybrida to create stunning digital experiences that engage your audience and grow your business.
             </p>
             <a 
               href="#" 

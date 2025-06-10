@@ -42,8 +42,8 @@ const FaqSection: React.FC = () => {
 
   const faqs = [
     {
-      question: "What services does Quick Site Lab offer?",
-      answer: "Quick Site Lab offers a comprehensive range of web development services including website design and development, e-commerce solutions, mobile app development, UI/UX design, digital marketing, SEO optimization, and ongoing maintenance and support."
+      question: "What services does Cybrida offer?",
+      answer: "Cybrida offers a comprehensive range of web development services including website design and development, e-commerce solutions, mobile app development, UI/UX design, digital marketing, SEO optimization, and ongoing maintenance and support."
     },
     {
       question: "How long does it take to build a website?",

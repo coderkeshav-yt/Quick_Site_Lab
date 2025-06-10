@@ -54,7 +54,7 @@ const ServiceDetailPage: React.FC = () => {
       const serviceData = getServiceById(serviceId);
       if (serviceData) {
         setService(serviceData);
-        document.title = `${serviceData.title} | Quick Site Lab`;
+        document.title = `${serviceData.title} | Cybrida`;
       }
       setIsLoading(false);
     }

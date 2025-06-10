@@ -249,7 +249,7 @@ const Navbar: React.FC = () => {
                   <div className="p-1 transition-all duration-300">
                     <img 
                       src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/a-logo-design-featuring-the-text-quicksi_CifZevJ7Sammm7AHdhV0Sw_SyfaagIaQPK5czYYfc-VCQ_iwzml0.jpg" 
-                      alt="Quick Site Lab Logo" 
+                      alt="Cybrida Logo" 
                       className="h-10 w-auto rounded-full" 
                     />
                   </div>

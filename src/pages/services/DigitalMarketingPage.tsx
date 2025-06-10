@@ -379,7 +379,7 @@ const DigitalMarketingPage: React.FC = () => {
                 <div className="relative h-[400px] md:h-[350px]">
                   {[
                     {
-                      content: "The digital marketing strategy developed by Quick Site Lab transformed our online presence. Our organic traffic increased by 150% and lead generation improved by 200% within just six months.",
+                      content: "The digital marketing strategy developed by Cybrida transformed our online presence. Our organic traffic increased by 150% and lead generation improved by 200% within just six months.",
                       author: "Sarah Johnson",
                       role: "Marketing Director, TechStart Inc.",
                       avatar: "https://randomuser.me/api/portraits/women/44.jpg",

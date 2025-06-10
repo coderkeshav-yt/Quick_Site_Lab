@@ -33,7 +33,7 @@ const HeroSection: React.FC = () => {
               
               {/* Description */}
               <p className="text-xl mb-8 text-white leading-relaxed max-w-xl">
-                 <span className="font-semibold">Quick Site Lab</span> transform your unique vision into high-performing,
+                 <span className="font-semibold">Cybrida</span> transform your unique vision into high-performing,
                   scalable, and visually stunning digital solutions—built
                  to engage users and drive measurable online success.
               </p>
@@ -70,7 +70,7 @@ const HeroSection: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-8">
             <div>
-              <h3 className="text-2xl font-bold text-white">Join over 15,000+ websites already powered by Quick Site lab</h3>
+              <h3 className="text-2xl font-bold text-white">Join over 15,000+ websites already powered by Cybrida</h3>
               <p className="text-blue-300 mt-1">Our dedication to quality has won the trust of many well-known brands in their industries.</p>
             </div>
             

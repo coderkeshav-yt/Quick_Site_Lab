@@ -26,7 +26,7 @@ const AboutHero: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="mb-6"
           >
-            <h1 className="text-5xl font-bold text-white mb-4">About Quick Site Lab</h1>
+            <h1 className="text-5xl font-bold text-white mb-4">About Cybrida</h1>
             <div className="w-24 h-1 bg-purple-500 mx-auto"></div>
           </motion.div>
           

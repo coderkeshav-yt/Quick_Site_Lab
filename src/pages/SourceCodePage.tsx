@@ -123,7 +123,21 @@ const SourceCodePage: React.FC = () => {
             Browse our collection of premium source code packages. Purchase once, use forever.
           </p>
         </div>
-        
+        <div className="mb-12 max-w-2xl mx-auto bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl shadow-lg p-8 border border-indigo-100">
+          <h3 className="text-2xl font-bold mb-2 text-indigo-700 flex items-center justify-center gap-2">
+            <svg className="w-7 h-7 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 10c-2.21 0-4-1.79-4-4h2a2 2 0 004 0h2c0 2.21-1.79 4-4 4zm6-4c0 3.31-2.69 6-6 6s-6-2.69-6-6c0-2.22 1.21-4.15 3-5.19V7a5 5 0 1110 0v1.81c1.79 1.04 3 2.97 3 5.19z" /></svg>
+            How to Buy
+          </h3>
+          <ol className="list-decimal list-inside text-gray-700 text-lg space-y-2">
+            <li>Click <span className="font-semibold text-purple-700">Buy Now</span> on your desired package.</li>
+            <li>A modal will open with package details and a <span className="font-semibold text-blue-700">Pay with Razorpay</span> button.</li>
+            <li>Complete payment via Razorpay. You will be contacted via email for delivery.</li>
+          </ol>
+          <div className="mt-4 text-indigo-700 text-base flex items-center gap-2">
+            <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" /></svg>
+            <span>Payments are processed securely via Razorpay.</span>
+          </div>
+        </div>
         <SourceCodeProducts />
       </div>
       

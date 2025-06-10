@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-1">
-            <h3 className="text-2xl font-bold mb-4">Quick Site Lab</h3>
+            <h3 className="text-2xl font-bold mb-4">Cybrida</h3>
             <p className="text-gray-300 mb-4">
               We build beautiful, functional websites and web applications that help businesses grow.
             </p>
@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
 
         <div className="mt-12 pt-8 border-t border-gray-700">
           <p className="text-gray-300 text-center">
-            &copy; {new Date().getFullYear()} Quick Site Lab. All rights reserved.
+            &copy; {new Date().getFullYear()} Cybrida. All rights reserved.
           </p>
         </div>
       </div>

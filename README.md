@@ -1,4 +1,4 @@
-# Quick Site Lab - Web Development Agency Website
+# Cybrida - Web Development Agency Website
 
 A modern, responsive website for a web development agency built with React, TypeScript, and Tailwind CSS. This project showcases a professional website with multiple sections including a hero banner, services, portfolio, testimonials, blog, and contact form.
 

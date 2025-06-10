@@ -407,14 +407,14 @@ const MobileAppsPage: React.FC = () => {
                 <div className="relative h-[400px] md:h-[350px]">
                   {[
                     {
-                      content: "The mobile app developed by Quick Site Lab exceeded our expectations. Their attention to detail and user experience design resulted in a 200% increase in user engagement within just three months of launch.",
+                      content: "The mobile app developed by Cybrida exceeded our expectations. Their attention to detail and user experience design resulted in a 200% increase in user engagement within just three months of launch.",
                       author: "Sarah Johnson",
                       role: "CEO, TechStart Inc.",
                       avatar: "https://randomuser.me/api/portraits/women/44.jpg",
                       rating: 5
                     },
                     {
-                      content: "Working with Quick Site Lab was a game-changer for our business. Their cross-platform solution saved us time and money without compromising on quality. The app has been downloaded over 100,000 times in just six months.",
+                      content: "Working with Cybrida was a game-changer for our business. Their cross-platform solution saved us time and money without compromising on quality. The app has been downloaded over 100,000 times in just six months.",
                       author: "Michael Chen",
                       role: "Product Manager, InnovateX",
                       avatar: "https://randomuser.me/api/portraits/men/32.jpg",

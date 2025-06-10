@@ -64,7 +64,7 @@ const UniqueValueSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-white mb-4">Why Choose Quick Site Lab</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Why Choose Cybrida</h2>
           <div className="w-24 h-1 bg-purple-500 mx-auto mb-6"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Our approach to web development sets us apart from the competition.

@@ -35,7 +35,7 @@ const BlogSection: React.FC = () => {
     {
       id: 2,
       title: "How to Optimize Your Website for Speed and Performance",
-      excerpt: "Learn the best practices for optimizing your website to achieve lightning-fast loading times and smooth performance. Discover the techniques used by Quick Site Lab experts.",
+      excerpt: "Learn the best practices for optimizing your website to achieve lightning-fast loading times and smooth performance. Discover the techniques used by Cybrida experts.",
       date: "May 10, 2025",
       author: "Michael Rodriguez",
       category: "Development",
@@ -47,7 +47,7 @@ const BlogSection: React.FC = () => {
     {
       id: 3,
       title: "The Importance of Responsive Design for Mobile Users",
-      excerpt: "Explore why responsive design is crucial for providing an optimal user experience across all devices. See how Quick Site Lab implements mobile-first strategies for better results.",
+      excerpt: "Explore why responsive design is crucial for providing an optimal user experience across all devices. See how Cybrida implements mobile-first strategies for better results.",
       date: "May 5, 2025",
       author: "Sarah Johnson",
       category: "UX/UI",
@@ -79,7 +79,7 @@ const BlogSection: React.FC = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
           >
-            Insights from <span className="text-primary">Quick Site Lab</span>
+            Insights from <span className="text-primary">Cybrida</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
