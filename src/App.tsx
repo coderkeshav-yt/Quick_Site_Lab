@@ -18,6 +18,7 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminPage from './pages/AdminPage';
+import EcommerceCaseStudy from './pages/case-studies/EcommerceCaseStudy';
 import { AuthProvider } from './contexts/AuthContext';
 import './index.css';
 import './App.css';
@@ -46,6 +47,7 @@ const App: React.FC = () => {
               <Route path="/admin" component={AdminPage} />
               <Route path="/login" component={LoginPage} />
               <Route path="/signup" component={SignupPage} />
+              <Route path="/case-studies/ecommerce" component={EcommerceCaseStudy} />
             </Switch>
           </div>
         </Layout>

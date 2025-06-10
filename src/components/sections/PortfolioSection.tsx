@@ -15,6 +15,7 @@ interface Project {
   client?: string;
   technologies?: string[];
   link?: string;
+  caseStudyLink?: string;
 }
 
 const PortfolioSection: React.FC = () => {
@@ -43,7 +44,8 @@ const PortfolioSection: React.FC = () => {
       description: "A modern e-commerce platform with advanced filtering, payment integration, and personalized recommendations.",
       client: "StyleHub Fashion",
       technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      link: "https://stylehub-demo.quicksitelab.com"
+      link: "https://stylehub-demo.quicksitelab.com",
+      caseStudyLink: "/case-studies/ecommerce"
     },
     {
       id: 2,
@@ -242,7 +244,7 @@ const PortfolioSection: React.FC = () => {
                           </div>
                           
                           <Link 
-                            to={`/portfolio/${project.id}`} 
+                            to={project.caseStudyLink || `/portfolio/${project.id}`} 
                             className="inline-flex items-center text-sm font-medium text-primary hover:text-accent transition-colors duration-200"
                           >
                             View Case Study <FiArrowRight className="ml-1 group-hover:translate-x-1 transition-transform duration-300" />
