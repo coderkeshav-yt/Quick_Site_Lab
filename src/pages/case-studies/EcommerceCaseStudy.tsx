@@ -239,9 +239,14 @@ const EcommerceCaseStudy: React.FC = () => {
                   transition={{ delay: 0.6, duration: 0.8 }}
                   className="flex flex-col sm:flex-row gap-4"
                 >
-                  <button className="bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/30">
+                  <a 
+                    href="https://www.naturalpuff.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-block bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/30"
+                  >
                     View Live Project
-                  </button>
+                  </a>
                   <button className="bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1">
                     Learn More
                   </button>
@@ -350,27 +355,27 @@ const EcommerceCaseStudy: React.FC = () => {
           <ImageGallery
             images={[
               {
-                src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                src: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621112/Screenshot_243_hpggoa.png",
                 alt: "E-commerce Dashboard"
               },
               {
-                src: "https://images.unsplash.com/photo-1555529665-e2267397a43c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                src: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621112/Screenshot_246_gpk4x6.png",
                 alt: "Product Listing Page"
               },
               {
-                src: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                src: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621112/Screenshot_245_wyrkar.png",
                 alt: "Mobile Responsive Design"
               },
               {
-                src: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                src: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621110/Screenshot_249_eh3hw5.png",
                 alt: "Checkout Process"
               },
               {
-                src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                src: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621110/Screenshot_248_dkg1kd.png",
                 alt: "Admin Dashboard"
               },
               {
-                src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                src: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621110/Screenshot_250_ksfh37.png",
                 alt: "Order Management"
               }
             ]}
@@ -399,7 +404,7 @@ const EcommerceCaseStudy: React.FC = () => {
                 </p>
                 <div className="mt-6">
                   <a 
-                    href="https://example.com" 
+                    href="https://www.naturalpuff.com/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-primary font-medium hover:text-accent transition-colors group"
@@ -419,7 +424,7 @@ const EcommerceCaseStudy: React.FC = () => {
             >
               <div className="bg-gray-100 rounded-2xl overflow-hidden shadow-xl transform rotate-1">
                 <img 
-                  src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                  src="https://res.cloudinary.com/dlvxjnycr/image/upload/v1749623666/Untitled_design_3_x8la0m.jpg" 
                   alt="E-commerce Platform Dashboard"
                   className="w-full h-auto"
                 />
@@ -496,7 +501,7 @@ const EcommerceCaseStudy: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
-                  Advanced search with AI-powered recommendations
+                  Advanced search with Functional sort & filter
                 </li>
               </ul>
             </motion.div>
@@ -552,11 +557,11 @@ const EcommerceCaseStudy: React.FC = () => {
                 <img 
                   className="w-12 h-12 rounded-full mr-4" 
                   src="https://randomuser.me/api/portraits/women/44.jpg" 
-                  alt="Sarah Johnson"
+                  alt="Animesh Doshi"
                 />
                 <div className="text-left">
-                  <p className="font-bold text-gray-900">Sarah Johnson</p>
-                  <p className="text-gray-600">CEO, StyleHub Retail</p>
+                  <p className="font-bold text-gray-900">Animesh Doshi</p>
+                  <p className="text-gray-600">CEO, Natural Puff</p>
                 </div>
               </footer>
             </blockquote>
