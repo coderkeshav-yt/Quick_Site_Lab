@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import { FiExternalLink, FiArrowRight, FiSearch, FiFilter, FiAward, FiStar, FiClock, FiUsers, FiGrid, FiTrendingUp, FiLayers, FiCheck, FiCoffee, FiHeart, FiChevronDown, FiX, FiMessageCircle } from 'react-icons/fi';
 const portfolio1 = 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149187/ECOM_zhn53a.webp';
@@ -15,6 +16,7 @@ interface Project {
   client?: string;
   technologies?: string[];
   link?: string;
+  caseStudyLink?: string;
   year: number;
   results?: string[];
 }
@@ -55,6 +57,7 @@ const Portfolio: React.FC = () => {
       client: "StyleHub Fashion",
       technologies: ["React", "Node.js", "MongoDB", "Stripe", "TailwindCSS"],
       link: "https://stylehub-demo.launchory.com",
+      caseStudyLink: "/case-studies/financial-dashboard",
       year: 2024,
       results: [
         "Increased conversion rate by 35%",
@@ -72,6 +75,7 @@ const Portfolio: React.FC = () => {
       client: "HomeQuest Properties",
       technologies: ["React Native", "Firebase", "Google Maps API", "AR Kit"],
       link: "https://homequest-demo.launchory.com",
+      caseStudyLink: "/case-studies/financial-dashboard",
       year: 2023,
       results: [
         "50,000+ downloads in first month",
@@ -87,8 +91,9 @@ const Portfolio: React.FC = () => {
       image: portfolio3,
       description: "Interactive dashboard for financial data visualization and analysis with real-time updates and predictive analytics powered by machine learning algorithms.",
       client: "InvestWise Financial",
-      technologies: ["Vue.js", "D3.js", "Express", "PostgreSQL", "TensorFlow.js"],
-      link: "https://investwise-demo.launchory.com",
+      technologies: ["React", "TypeScript", "D3.js", "Node.js", "PostgreSQL"],
+      link: "https://market-pulse-three.vercel.app/",
+      caseStudyLink: "/case-studies/financial-dashboard",
       year: 2024,
       results: [
         "Reduced data analysis time by 75%",
@@ -106,6 +111,7 @@ const Portfolio: React.FC = () => {
       client: "FitLife Health",
       technologies: ["Flutter", "Firebase", "HealthKit", "Google Fit API", "TensorFlow Lite"],
       link: "https://fitlife-demo.launchory.com",
+      caseStudyLink: "/case-studies/financial-dashboard",
       year: 2023,
       results: [
         "85% user retention after 3 months",
@@ -123,6 +129,7 @@ const Portfolio: React.FC = () => {
       client: "Wanderlust Adventures",
       technologies: ["Next.js", "Sanity CMS", "Tailwind CSS", "Mapbox", "Cloudinary"],
       link: "https://wanderlust-demo.launchory.com",
+      caseStudyLink: "/case-studies/landing-page",
       year: 2024,
       results: [
         "300% increase in organic traffic",
@@ -140,6 +147,7 @@ const Portfolio: React.FC = () => {
       client: "Gourmet Dining Group",
       technologies: ["React", "Node.js", "Socket.io", "Stripe", "Redis"],
       link: "https://gourmet-demo.launchory.com",
+      caseStudyLink: "/case-studies/financial-dashboard",
       year: 2023,
       results: [
         "Increased average order value by 22%",
@@ -157,6 +165,7 @@ const Portfolio: React.FC = () => {
       client: "MedConnect Health",
       technologies: ["React", "WebRTC", "Node.js", "MongoDB", "AWS"],
       link: "https://medconnect-demo.launchory.com",
+      caseStudyLink: "/case-studies/financial-dashboard",
       year: 2024,
       results: [
         "Facilitated 10,000+ virtual consultations monthly",
@@ -174,6 +183,7 @@ const Portfolio: React.FC = () => {
       client: "WealthWise Investments",
       technologies: ["React Native", "Redux", "Firebase", "Alpha Vantage API"],
       link: "https://wealthwise-demo.launchory.com",
+      caseStudyLink: "/case-studies/financial-dashboard",
       year: 2023,
       results: [
         "Assets under management grew by $50M in 6 months",
@@ -191,6 +201,7 @@ const Portfolio: React.FC = () => {
       client: "Elite Stays International",
       technologies: ["Next.js", "GraphQL", "PostgreSQL", "Stripe", "Three.js"],
       link: "https://elitestays-demo.launchory.com",
+      caseStudyLink: "/case-studies/financial-dashboard",
       year: 2024,
       results: [
         "Booking conversion rate increased to 12%",
@@ -645,12 +656,23 @@ const Portfolio: React.FC = () => {
                                 ))}
                               </div>
                               
-                              <a 
-                                href={`/portfolio/${project.id}`} 
-                                className="inline-flex items-center text-sm font-medium text-indigo-700 hover:text-indigo-900 transition-colors duration-200"
-                              >
-                                View Case Study <FiArrowRight className="ml-1 group-hover:translate-x-1 transition-transform duration-300" />
-                              </a>
+                              {project.caseStudyLink ? (
+                                <Link 
+                                  to={project.caseStudyLink} 
+                                  className="inline-flex items-center text-sm font-medium text-indigo-700 hover:text-indigo-900 transition-colors duration-200"
+                                >
+                                  View Case Study <FiArrowRight className="ml-1 group-hover:translate-x-1 transition-transform duration-300" />
+                                </Link>
+                              ) : project.link ? (
+                                <a 
+                                  href={project.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer" 
+                                  className="inline-flex items-center text-sm font-medium text-indigo-700 hover:text-indigo-900 transition-colors duration-200"
+                                >
+                                  Visit Project <FiExternalLink className="ml-1" />
+                                </a>
+                              ) : null}
                             </div>
                           )}
                         </div>
@@ -837,7 +859,7 @@ const Portfolio: React.FC = () => {
                 Start Your Project <FiArrowRight className="ml-2" />
               </a>
               <a 
-                href="mailto:quicksitelabteam@gmail.com" 
+                href="mailto:cybridaagency@gmail.com" 
                 className="inline-flex items-center px-8 py-4 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition-all duration-300 font-['Rubik']"
               >
                 Contact Us

@@ -191,11 +191,11 @@ const ContactPage: React.FC = () => {
             >
               <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg flex items-center gap-3 text-white">
                 <FiMail className="text-purple-300 text-xl" />
-                <span>quicksitelabteam@gmail.com</span>
+                <span>cybridaagency@gmail.com</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg flex items-center gap-3 text-white">
                 <FiPhone className="text-purple-300 text-xl" />
-                <span>+91 9876543210</span>
+                <span>+91 8579956949</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg flex items-center gap-3 text-white">
                 <FiMapPin className="text-purple-300 text-xl" />
@@ -412,8 +412,8 @@ const ContactPage: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 text-lg mb-1">Get in Touch</h3>
-                  <p className="text-gray-600">Email: quicksitelabteam@gmail.com</p>
-                  <p className="text-gray-600">Phone: +91 9876543210</p>
+                  <p className="text-gray-600">Email: cybridaagency@gmail.com</p>
+                  <p className="text-gray-600">Phone: +91 8579956949</p>
                 </div>
               </motion.div>
             </div>

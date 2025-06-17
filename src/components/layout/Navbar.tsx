@@ -296,9 +296,12 @@ const Navbar: React.FC = () => {
                 <Link to="/about" className="px-3 py-1.5 text-sm font-bold text-gray-800 hover:text-primary transition-all duration-200">
                   About
                 </Link>
-                <Link to="/portfolio" className="px-3 py-1.5 text-sm font-bold text-gray-800 hover:text-primary transition-all duration-200">
-                  Portfolio
-                </Link>
+                            <Link
+              to="/portfolio"
+              className="px-3 py-1.5 text-sm font-bold text-gray-800 hover:text-primary transition-all duration-200"
+            >
+              Portfolio
+            </Link>
                 <Link to="/source-code" className="px-3 py-1.5 text-sm font-bold text-gray-800 hover:text-primary transition-all duration-200">
                   Source Code
                 </Link>

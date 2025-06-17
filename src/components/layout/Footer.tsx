@@ -14,16 +14,16 @@ const Footer: React.FC = () => {
               We build beautiful, functional websites and web applications that help businesses grow.
             </p>
             <div className="flex space-x-4">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
+              <a href="https://x.com/cybrida_" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <span className="h-6 w-6"><FiTwitter /></span>
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
+              <a href="https://www.facebook.com/cybridatech" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <span className="h-6 w-6"><FiFacebook /></span>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
+              <a href="https://www.instagram.com/cybrida_/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <span className="h-6 w-6"><FiInstagram /></span>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
+              <a href="https://www.linkedin.com/in/keshav-singh-4757b9369/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <span className="h-6 w-6"><FiLinkedin /></span>
               </a>
             </div>
@@ -79,8 +79,8 @@ const Footer: React.FC = () => {
             <address className="not-italic text-gray-300">
               <p className="mb-2">New Delhi</p>
               <p className="mb-2">India, 110005</p>
-              <p className="mb-2">Email: quicksitelabteam@gmail.com</p>
-              <p>Phone: +91 9876543210</p>
+              <p className="mb-2">Email: cybridaagency@gmail.com</p>
+              <p>Phone: +91 8579956949</p>
             </address>
           </div>
         </div>

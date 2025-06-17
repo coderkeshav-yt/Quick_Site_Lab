@@ -225,9 +225,9 @@ const TeamSection: React.FC = () => {
       experience: "Previously led technology at Fortune 500 companies and founded two successful tech startups.",
       education: "MCA from NIT Tiruchirappalli and B.Tech in Computer Science from IIT Delhi",
       email: "keshavtech01@gmail.com",
-      linkedin: "#",
-      twitter: "#",
-      github: "#"
+      linkedin: "https://www.linkedin.com/in/keshav-singh-4757b9369/",
+      twitter: "https://x.com/cybrida_",
+      github: "https://github.com/keshavkumar"
     },
     {
       name: "Rajeev Kumar",
@@ -238,9 +238,9 @@ const TeamSection: React.FC = () => {
       experience: "Led engineering teams at Google and Microsoft, with multiple patents in cloud computing.",
       education: "MCA from LPU and B.Tech in Computer Science from IIT KGP",
       email: "rajeevkumar@gmail.com",
-      linkedin: "#",
-      twitter: "#",
-      github: "#"
+      linkedin: "https://www.linkedin.com/in/keshav-singh-4757b9369/",
+      twitter: "https://x.com/cybrida_",
+      github: "https://github.com/rajeevkumar"
     }
   ];
 

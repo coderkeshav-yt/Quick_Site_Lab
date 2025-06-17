@@ -19,6 +19,11 @@ import SignupPage from './pages/SignupPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminPage from './pages/AdminPage';
 import EcommerceCaseStudy from './pages/case-studies/EcommerceCaseStudy';
+import GymWebsiteCaseStudy from './pages/case-studies/GymWebsiteCaseStudy';
+import FinancialDashboardCaseStudy from './pages/case-studies/FinancialDashboardCaseStudy';
+import DigitalPetStoreCaseStudy from './pages/case-studies/DigitalPetStoreCaseStudy';
+import LandingPageCaseStudy from './pages/case-studies/LandingPageCaseStudy';
+import DevelopmentProgress from './pages/DevelopmentProgress';
 import { AuthProvider } from './contexts/AuthContext';
 import './index.css';
 import './App.css';
@@ -48,6 +53,11 @@ const App: React.FC = () => {
               <Route path="/login" component={LoginPage} />
               <Route path="/signup" component={SignupPage} />
               <Route path="/case-studies/ecommerce" component={EcommerceCaseStudy} />
+              <Route path="/case-studies/gym" component={GymWebsiteCaseStudy} />
+              <Route path="/case-studies/financial-dashboard" component={FinancialDashboardCaseStudy} />
+              <Route path="/case-studies/digital-pet-store" component={DigitalPetStoreCaseStudy} />
+              <Route path="/case-studies/landing-page" component={LandingPageCaseStudy} />
+              <Route path="/development-progress" component={DevelopmentProgress} />
             </Switch>
           </div>
         </Layout>
