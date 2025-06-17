@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiExternalLink, FiArrowRight } from 'react-icons/fi';
-import portfolio1 from '../../assets/portfolio-1.svg';
-import portfolio2 from '../../assets/portfolio-2.svg';
-import portfolio3 from '../../assets/portfolio-3.svg';
+const portfolio1 = 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149187/ECOM_zhn53a.webp';
+const portfolio2 = 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149187/GYM_pyy6dt.webp';
+const portfolio3 = 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149186/ADMIN_m03axo.jpg';
 
 interface Project {
   id: number;
@@ -42,15 +42,15 @@ const PortfolioSection: React.FC = () => {
       category: "web",
       image: portfolio1,
       description: "A modern e-commerce platform with advanced filtering, payment integration, and personalized recommendations.",
-      client: "StyleHub Fashion",
+      client: "StyleHub Fashi",
       technologies: ["React", "Node.js", "MongoDB", "Stripe"],
       link: "https://stylehub-demo.quicksitelab.com",
       caseStudyLink: "/case-studies/ecommerce"
     },
     {
       id: 2,
-      title: "Real Estate App",
-      category: "mobile",
+      title: "Gym Website",
+      category: "web",
       image: portfolio2,
       description: "Mobile application for real estate listings with interactive maps, virtual tours, and mortgage calculator.",
       client: "HomeQuest Properties",
@@ -71,7 +71,7 @@ const PortfolioSection: React.FC = () => {
       id: 4,
       title: "Fitness Tracker",
       category: "mobile",
-      image: "https://via.placeholder.com/600x400/EF4444/FFFFFF?text=Fitness+Tracker",
+      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149235/PET_mtepca.jpg",
       description: "Mobile app for tracking workouts, nutrition, and health metrics with personalized coaching and social features.",
       client: "FitLife Health",
       technologies: ["Flutter", "Firebase", "HealthKit", "Google Fit API"],
@@ -81,7 +81,7 @@ const PortfolioSection: React.FC = () => {
       id: 5,
       title: "Travel Blog",
       category: "web",
-      image: "https://via.placeholder.com/600x400/8B5CF6/FFFFFF?text=Travel+Blog",
+      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149186/LAND_vzb2pe.jpg",
       description: "Content-focused travel blog with custom CMS, interactive maps, and social sharing integration.",
       client: "Wanderlust Adventures",
       technologies: ["Next.js", "Sanity CMS", "Tailwind CSS", "Mapbox"],
@@ -91,7 +91,7 @@ const PortfolioSection: React.FC = () => {
       id: 6,
       title: "Restaurant Ordering System",
       category: "web",
-      image: "https://via.placeholder.com/600x400/EC4899/FFFFFF?text=Restaurant+Ordering",
+      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149189/RESTAURANT_z3klfi.webp",
       description: "Online ordering system for restaurants with real-time updates, table reservations, and loyalty program.",
       client: "Gourmet Dining Group",
       technologies: ["React", "Node.js", "Socket.io", "Stripe"],
@@ -206,7 +206,7 @@ const PortfolioSection: React.FC = () => {
                       <img 
                         src={project.image} 
                         alt={project.title} 
-                        className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="w-full h-64 object-cover"
                       />
                       {project.link && (
                         <a 
