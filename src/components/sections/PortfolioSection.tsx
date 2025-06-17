@@ -42,9 +42,9 @@ const PortfolioSection: React.FC = () => {
       category: "web",
       image: portfolio1,
       description: "A modern e-commerce platform with advanced filtering, payment integration, and personalized recommendations.",
-      client: "StyleHub Fashi",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      link: "https://stylehub-demo.quicksitelab.com",
+      client: "Natural Puff",
+      technologies: ["React", "Node.js", "MongoDB", "Razorpay"],
+      link: "https://www.naturalpuff.com/",
       caseStudyLink: "/case-studies/ecommerce"
     },
     {
@@ -52,10 +52,10 @@ const PortfolioSection: React.FC = () => {
       title: "Gym Website",
       category: "web",
       image: portfolio2,
-      description: "Mobile application for real estate listings with interactive maps, virtual tours, and mortgage calculator.",
-      client: "HomeQuest Properties",
-      technologies: ["React Native", "Firebase", "Google Maps API"],
-      link: "https://homequest-demo.quicksitelab.com"
+      description: "A comprehensive gym website with class schedules, membership plans, and trainer profiles.",
+      client: "Be in Shape",
+      technologies: ["React", "Node.js", "Vite", "Tailwind CSS"],
+      link: "https://gymweb-zeta.vercel.app/",
     },
     {
       id: 3,
@@ -63,29 +63,29 @@ const PortfolioSection: React.FC = () => {
       category: "web",
       image: portfolio3,
       description: "Interactive dashboard for financial data visualization and analysis with real-time updates and predictive analytics.",
-      client: "InvestWise Financial",
+      client: "Market Pulse",
       technologies: ["Vue.js", "D3.js", "Express", "PostgreSQL"],
-      link: "https://investwise-demo.quicksitelab.com"
+      link: "https://market-pulse-three.vercel.app/",
     },
     {
       id: 4,
-      title: "Fitness Tracker",
+      title: "Digital Pet Store",
       category: "mobile",
       image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149235/PET_mtepca.jpg",
       description: "Mobile app for tracking workouts, nutrition, and health metrics with personalized coaching and social features.",
-      client: "FitLife Health",
-      technologies: ["Flutter", "Firebase", "HealthKit", "Google Fit API"],
-      link: "https://fitlife-demo.quicksitelab.com"
+      client: "Pawfectly Yours",
+      technologies: ["React", "Firebase", "Node.js", "Stripe"],
+      link: "https://pawfectly-yours.vercel.app/"
     },
     {
       id: 5,
-      title: "Travel Blog",
+      title: "Landing Page",
       category: "web",
       image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149186/LAND_vzb2pe.jpg",
       description: "Content-focused travel blog with custom CMS, interactive maps, and social sharing integration.",
       client: "Wanderlust Adventures",
-      technologies: ["Next.js", "Sanity CMS", "Tailwind CSS", "Mapbox"],
-      link: "https://wanderlust-demo.quicksitelab.com"
+      technologies: ["Next.js", "Vue.js", "Tailwind CSS", "Webflow"],
+      link: "https://landing-page-olive-five-82.vercel.app/"
     },
     {
       id: 6,
@@ -95,7 +95,7 @@ const PortfolioSection: React.FC = () => {
       description: "Online ordering system for restaurants with real-time updates, table reservations, and loyalty program.",
       client: "Gourmet Dining Group",
       technologies: ["React", "Node.js", "Socket.io", "Stripe"],
-      link: "https://gourmet-demo.quicksitelab.com"
+      link: "https://www.gourmetdining.com/"
     }
   ];
   

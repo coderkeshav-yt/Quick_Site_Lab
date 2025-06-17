@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import { FiExternalLink, FiArrowRight, FiSearch, FiFilter, FiAward, FiStar, FiClock, FiUsers, FiGrid, FiTrendingUp, FiLayers, FiCheck, FiCoffee, FiHeart, FiChevronDown, FiX, FiMessageCircle } from 'react-icons/fi';
-import portfolio1 from '../assets/portfolio-1.svg';
-import portfolio2 from '../assets/portfolio-2.svg';
-import portfolio3 from '../assets/portfolio-3.svg';
+const portfolio1 = 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149187/ECOM_zhn53a.webp';
+const portfolio2 = 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149187/GYM_pyy6dt.webp';
+const portfolio3 = 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149186/ADMIN_m03axo.jpg';
 
 interface Project {
   id: number;

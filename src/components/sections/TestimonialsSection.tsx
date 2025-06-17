@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiStar, FiArrowLeft, FiArrowRight, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import testimonial1 from '../../assets/testimonial-1.svg';
-import testimonial2 from '../../assets/testimonial-2.svg';
-import testimonial3 from '../../assets/testimonial-3.svg';
+import testimonial1 from '../../assets/testimonial-1.png';
+import testimonial2 from '../../assets/testimonial-2.png';
+import testimonial3 from '../../assets/testimonial-3.png';
 
 interface Testimonial {
   id: number;
