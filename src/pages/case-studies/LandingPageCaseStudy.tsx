@@ -5,8 +5,18 @@ import { FiArrowLeft, FiBarChart2, FiLayers, FiActivity, FiLock, FiArrowRight, F
 import { SiReact, SiTypescript, SiTailwindcss, SiNextdotjs, SiVercel, SiGoogleanalytics, SiWebpack, SiVite, SiEslint, SiPrettier } from 'react-icons/si';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import ImageGallery from '../../components/ui/ImageGallery';
+import { useHistory } from 'react-router-dom';
+import { scrollToPortfolio } from '../../utils/scrollUtils';
 
 const LandingPageCaseStudy: React.FC = () => {
+  const history = useHistory();
+
+  const handleBackClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    history.push('/');
+    scrollToPortfolio();
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
@@ -16,7 +26,7 @@ const LandingPageCaseStudy: React.FC = () => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-stripes.png')] opacity-5"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <Link to="/portfolio">
+          <a href="/" onClick={handleBackClick}>
             <motion.div
               whileHover={{ x: -5 }}
               className="inline-flex items-center text-white/80 hover:text-white mb-12 transition-colors cursor-pointer group"
@@ -24,7 +34,7 @@ const LandingPageCaseStudy: React.FC = () => {
               <FiArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" /> 
               Back to Portfolio
             </motion.div>
-          </Link>
+          </a>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>

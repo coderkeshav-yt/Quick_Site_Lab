@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './components/layout/Layout';
+import ScrollToTop from './components/ui/ScrollToTop';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import GetStartedPage from './pages/GetStartedPage';
@@ -11,6 +12,7 @@ import ServiceDetailPage from './pages/ServiceDetailPage';
 import MobileAppsPage from './pages/services/MobileAppsPage';
 import SourceCodePage from './pages/SourceCodePage';
 import ProductDetailPage from './pages/ProductDetailPage';
+import EcommerceDetailPage from './pages/EcommerceDetailPage';
 import ThankYouPage from './pages/ThankYouPage';
 import CancelPage from './pages/CancelPage';
 import AdminUploadPage from './pages/AdminUploadPage';
@@ -24,6 +26,7 @@ import FinancialDashboardCaseStudy from './pages/case-studies/FinancialDashboard
 import DigitalPetStoreCaseStudy from './pages/case-studies/DigitalPetStoreCaseStudy';
 import LandingPageCaseStudy from './pages/case-studies/LandingPageCaseStudy';
 import DevelopmentProgress from './pages/DevelopmentProgress';
+import BlogPost from './pages/blog/BlogPost';
 import { AuthProvider } from './contexts/AuthContext';
 import './index.css';
 import './App.css';
@@ -32,6 +35,7 @@ const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
+        <ScrollToTop />
         <Layout>
           <div className="App">
             <Switch>
@@ -45,6 +49,8 @@ const App: React.FC = () => {
               <Route path="/services/:serviceId" component={ServiceDetailPage} />
               <Route path="/source-code" exact component={SourceCodePage} />
               <Route path="/source-code/:productId" component={ProductDetailPage} />
+              <Route path="/product-detail" component={ProductDetailPage} />
+              <Route path="/product-detailv" component={EcommerceDetailPage} />
               <Route path="/thank-you" component={ThankYouPage} />
               <Route path="/cancel" component={CancelPage} />
               <Route path="/admin/upload" component={AdminUploadPage} />
@@ -58,6 +64,7 @@ const App: React.FC = () => {
               <Route path="/case-studies/digital-pet-store" component={DigitalPetStoreCaseStudy} />
               <Route path="/case-studies/landing-page" component={LandingPageCaseStudy} />
               <Route path="/development-progress" component={DevelopmentProgress} />
+              <Route path="/blog/:id" component={BlogPost} />
             </Switch>
           </div>
         </Layout>

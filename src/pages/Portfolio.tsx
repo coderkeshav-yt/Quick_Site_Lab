@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import { FiExternalLink, FiArrowRight, FiSearch, FiFilter, FiAward, FiStar, FiClock, FiUsers, FiGrid, FiTrendingUp, FiLayers, FiCheck, FiCoffee, FiHeart, FiChevronDown, FiX, FiMessageCircle } from 'react-icons/fi';
+import { Helmet } from 'react-helmet';
 const portfolio1 = 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149187/ECOM_zhn53a.webp';
 const portfolio2 = 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149187/GYM_pyy6dt.webp';
 const portfolio3 = 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149186/ADMIN_m03axo.jpg';
@@ -288,7 +289,18 @@ const Portfolio: React.FC = () => {
   ];
   
   return (
-    <>
+    <main>
+      <Helmet>
+        <title>Portfolio | Cybrida</title>
+        <meta name="description" content="See Cybrida's portfolio of web design, development, and digital transformation projects." />
+        <meta property="og:title" content="Portfolio | Cybrida" />
+        <meta property="og:description" content="See Cybrida's portfolio of web design, development, and digital transformation projects." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Portfolio | Cybrida" />
+        <meta name="twitter:description" content="See Cybrida's portfolio of web design, development, and digital transformation projects." />
+      </Helmet>
       {/* Hero Section with Parallax Effect */}
       <section className="pt-32 pb-16 relative overflow-hidden">
         {/* Parallax Background with Grid Overlay */}
@@ -868,7 +880,7 @@ const Portfolio: React.FC = () => {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 };
 

@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { loadStripe } from '@stripe/stripe-js';
 import Breadcrumb from '../components/ui/Breadcrumb';
+import { FiShield, FiCpu, FiUsers, FiGlobe, FiZap, FiPackage, FiCode, FiGift, FiBook, FiShare2, FiX, FiChevronLeft, FiChevronRight, FiShoppingCart, FiCheck } from 'react-icons/fi';
+import { FaTwitter, FaFacebook, FaLinkedin, FaLink } from 'react-icons/fa';
+import Modal from '../components/ui/Modal';
+import Toast from '../components/ui/Toast';
+
+// Declare Razorpay
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 // Define product type
 interface Product {
@@ -28,7 +39,7 @@ const products: Product[] = [
     description: 'A modern, responsive portfolio website template for developers and designers.',
     longDescription: 'This professional portfolio template is designed for developers, designers, and creative professionals who want to showcase their work in a modern and responsive layout. Built with the latest technologies, it offers a seamless user experience across all devices and screen sizes. The clean and minimalist design ensures that your projects and skills are the center of attention, while the smooth animations and transitions add a touch of sophistication. Customization is straightforward, allowing you to make it your own without extensive coding knowledge.',
     price: 49,
-    image: '/images/products/portfolio-template.jpg',
+    image: 'https://via.placeholder.com/800x600?text=Portfolio+Template',
     features: [
       'React & Next.js',
       'Tailwind CSS styling',
@@ -40,36 +51,74 @@ const products: Product[] = [
       'SEO optimized'
     ],
     techStack: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript'],
-    youtubeId: 'dQw4w9WgXcQ', // Replace with actual YouTube ID
+    youtubeId: 'dQw4w9WgXcQ',
     gallery: [
-      '/images/products/portfolio-1.jpg',
-      '/images/products/portfolio-2.jpg',
-      '/images/products/portfolio-3.jpg'
+      'https://via.placeholder.com/800x600?text=Portfolio+1',
+      'https://via.placeholder.com/800x600?text=Portfolio+2',
+      'https://via.placeholder.com/800x600?text=Portfolio+3'
     ]
   },
   {
     id: 'ecommerce-starter',
-    name: 'E-commerce Starter Kit',
-    description: 'Complete e-commerce solution with product listings, cart, and checkout functionality.',
-    longDescription: 'Launch your online store quickly with this comprehensive e-commerce starter kit. It includes everything you need to start selling products online, from dynamic product listings to a secure checkout process. The kit features a robust shopping cart system, user authentication for account management, and an admin dashboard to manage your products and orders. Built with scalability in mind, it can grow with your business from a few products to a large catalog. The clean, conversion-focused design helps maximize your sales potential while providing an excellent shopping experience for your customers.',
-    price: 99,
-    image: '/images/products/ecommerce-starter.jpg',
+    name: 'E-commerce Starter Kit Pro',
+    description: 'Production-ready e-commerce solution with advanced features, optimized performance, and seamless integrations.',
+    longDescription: `Launch your online store with our comprehensive e-commerce solution that combines modern technology with battle-tested practices. This starter kit is designed for serious businesses looking to establish a strong online presence.
+
+Built with scalability in mind, it handles everything from a small boutique to a large-scale marketplace. The clean, conversion-focused design helps maximize your sales potential while providing an exceptional shopping experience for your customers.
+
+Key highlights:
+• Fully responsive design optimized for all devices
+• Advanced cart and checkout system with multiple payment options
+• Real-time inventory management and order tracking
+• SEO optimized with structured data and performance focus
+• Comprehensive admin dashboard with analytics
+• Multi-language and multi-currency support
+• Advanced search with filters and sorting
+• Wishlist and save for later functionality`,
+    price: 3500,
+    image: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621112/Screenshot_243_hpggoa.png',
     features: [
-      'React & Redux',
-      'Product catalog',
-      'Shopping cart',
-      'Checkout process',
-      'User authentication',
-      'Order history',
-      'Admin dashboard',
-      'Stripe integration'
+      'Advanced Product Management',
+      'Multi-vendor Support',
+      'Real-time Inventory Tracking',
+      'Dynamic Search & Filtering',
+      'Secure Payment Processing',
+      'Order Management System',
+      'Customer Reviews & Ratings',
+      'Wishlist & Collections',
+      'Multi-language Support',
+      'SEO Optimization Tools',
+      'Analytics Dashboard',
+      'Mobile-first Design',
+      'Email Notification System',
+      'Discount & Coupon Engine',
+      'Abandoned Cart Recovery'
     ],
-    techStack: ['React', 'Redux', 'Node.js', 'Express', 'MongoDB', 'Stripe API'],
-    youtubeId: 'jNQXAC9IVRw', // Replace with actual YouTube ID
+    techStack: [
+      'React 18+',
+      'Next.js 13',
+      'TypeScript',
+      'Redux Toolkit',
+      'Tailwind CSS',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'Redis',
+      'Stripe API',
+      'AWS S3',
+      'Docker',
+      'Jest & RTL',
+      'GitHub Actions'
+    ],
+    demoUrl: 'https://ecommerce-demo.launchory.com',
+    youtubeId: 'jNQXAC9IVRw',
     gallery: [
-      '/images/products/ecommerce-1.jpg',
-      '/images/products/ecommerce-2.jpg',
-      '/images/products/ecommerce-3.jpg'
+      'https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621112/Screenshot_243_hpggoa.png',
+      'https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621112/Screenshot_245_wyrkar.png',
+      'https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621110/Screenshot_249_eh3hw5.png',
+      'https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621110/Screenshot_250_ksfh37.png',
+      'https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621112/Screenshot_246_gpk4x6.png',
+      'https://res.cloudinary.com/dlvxjnycr/image/upload/v1749621110/Screenshot_248_dkg1kd.png'
     ]
   },
   {
@@ -78,7 +127,7 @@ const products: Product[] = [
     description: 'Full-featured blog platform with markdown support, comments, and user authentication.',
     longDescription: 'Create a professional blog with this modern, feature-rich platform. It supports markdown for easy content creation, has a built-in comment system to engage with your readers, and includes user authentication for managing authors and subscribers. The platform is designed with performance in mind, ensuring fast load times and a smooth reading experience. It includes categories and tags for organizing content, a powerful search functionality to help readers find relevant articles, and a responsive design that looks great on all devices. Whether you\'re a solo blogger or managing a team of writers, this platform provides all the tools you need to publish and grow your audience.',
     price: 79,
-    image: '/images/products/blog-platform.jpg',
+    image: 'https://via.placeholder.com/800x600?text=Blog+Platform',
     features: [
       'React & Node.js',
       'MongoDB database',
@@ -90,12 +139,37 @@ const products: Product[] = [
       'Responsive design'
     ],
     techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT Authentication'],
-    youtubeId: 'M7lc1UVf-VE', // Replace with actual YouTube ID
+    youtubeId: 'M7lc1UVf-VE',
     gallery: [
-      '/images/products/blog-1.jpg',
-      '/images/products/blog-2.jpg',
-      '/images/products/blog-3.jpg'
+      'https://via.placeholder.com/800x600?text=Blog+1',
+      'https://via.placeholder.com/800x600?text=Blog+2',
+      'https://via.placeholder.com/800x600?text=Blog+3'
     ]
+  }
+];
+
+// Add testimonials
+const testimonials = [
+  {
+    name: 'Sarah Johnson',
+    role: 'E-commerce Director',
+    company: 'Fashion Boutique',
+    image: 'https://via.placeholder.com/100x100?text=SJ',
+    text: 'This starter kit saved us months of development time. The code quality is exceptional, and the support team is incredibly responsive.'
+  },
+  {
+    name: 'Michael Chen',
+    role: 'CTO',
+    company: 'Tech Marketplace',
+    image: 'https://via.placeholder.com/100x100?text=MC',
+    text: 'We were able to launch our marketplace in record time. The multi-vendor support and scalability features are exactly what we needed.'
+  },
+  {
+    name: 'Emma Davis',
+    role: 'Founder',
+    company: 'Artisan Goods',
+    image: 'https://via.placeholder.com/100x100?text=ED',
+    text: 'The attention to detail in the UI/UX and the robust backend features helped us create a premium shopping experience for our customers.'
   }
 ];
 
@@ -109,17 +183,46 @@ const ProductDetailPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState<string>('');
   const [activeTab, setActiveTab] = useState<'overview' | 'features' | 'tech'>('overview');
+  const [showShareModal, setShowShareModal] = useState<boolean>(false);
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState<boolean>(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
   useEffect(() => {
-    // Find the product based on the URL parameter
     const foundProduct = products.find(p => p.id === productId);
     if (foundProduct) {
       setProduct(foundProduct);
       setActiveImage(foundProduct.image);
     }
-    // Scroll to top when product changes
     window.scrollTo(0, 0);
   }, [productId]);
+
+  const handleShare = async (platform: string) => {
+    const url = window.location.href;
+    const title = product?.name || 'Check out this product';
+    
+    switch (platform) {
+      case 'twitter':
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`);
+        break;
+      case 'facebook':
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+        break;
+      case 'linkedin':
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`);
+        break;
+      case 'copy':
+        try {
+          await navigator.clipboard.writeText(url);
+          setShowToast(true);
+          setTimeout(() => setShowToast(false), 3000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+        break;
+    }
+    setShowShareModal(false);
+  };
 
   const handleCheckout = async () => {
     if (!product) return;
@@ -133,43 +236,112 @@ const ProductDetailPage: React.FC = () => {
     setError(null);
     
     try {
-      const stripe = await stripePromise;
-      
-      if (!stripe) {
-        throw new Error('Stripe failed to initialize');
-      }
+      // Load Razorpay script
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      document.body.appendChild(script);
 
-      // Create checkout session
-      const response = await fetch('/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          productId: product.id,
-          productName: product.name,
-          productPrice: product.price,
-          productImage: product.image,
-          customerEmail: email
-        }),
-      });
+      script.onload = async () => {
+        try {
+          // Create order on your backend
+          const response = await fetch('/api/create-razorpay-order', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              productId: product.id,
+              productName: product.name,
+              amount: product.price * 100, // Razorpay expects amount in paise
+              email: email
+            }),
+          });
 
-      const session = await response.json();
+          const order = await response.json();
 
-      // Redirect to Stripe Checkout
-      const result = await stripe.redirectToCheckout({
-        sessionId: session.id,
-      });
+          if (!order.id) {
+            throw new Error('Failed to create order');
+          }
 
-      if (result.error) {
-        throw new Error(result.error.message);
-      }
+          // Initialize Razorpay
+          const options = {
+            key: process.env.REACT_APP_RAZORPAY_KEY_ID,
+            amount: product.price * 100,
+            currency: 'INR',
+            name: 'Launchory',
+            description: `Purchase ${product.name}`,
+            order_id: order.id,
+            prefill: {
+              email: email,
+            },
+            handler: async (response: any) => {
+              try {
+                // Verify payment on your backend
+                const verifyResponse = await fetch('/api/verify-payment', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    orderId: order.id,
+                    paymentId: response.razorpay_payment_id,
+                    signature: response.razorpay_signature,
+                  }),
+                });
+
+                const verifyResult = await verifyResponse.json();
+
+                if (verifyResult.success) {
+                  // Redirect to success page
+                  window.location.href = '/thank-you';
+                } else {
+                  throw new Error('Payment verification failed');
+                }
+              } catch (err) {
+                console.error('Payment verification error:', err);
+                setError('Payment verification failed. Please contact support.');
+              }
+            },
+            modal: {
+              ondismiss: () => {
+                setIsLoading(false);
+              },
+            },
+            theme: {
+              color: '#7C3AED', // Purple color matching your theme
+            },
+          };
+
+          const razorpay = new window.Razorpay(options);
+          razorpay.open();
+        } catch (err) {
+          console.error('Razorpay error:', err);
+          setError('Failed to initialize payment. Please try again.');
+          setIsLoading(false);
+        }
+      };
+
+      script.onerror = () => {
+        setError('Failed to load payment system. Please try again.');
+        setIsLoading(false);
+      };
     } catch (err) {
       console.error('Error during checkout:', err);
       setError('An error occurred during checkout. Please try again.');
-    } finally {
       setIsLoading(false);
     }
+  };
+
+  const nextImage = () => {
+    if (!product?.gallery) return;
+    const maxIndex = product.gallery.length;
+    setCurrentImageIndex((prev) => (prev + 1) % maxIndex);
+  };
+
+  const prevImage = () => {
+    if (!product?.gallery) return;
+    const maxIndex = product.gallery.length;
+    setCurrentImageIndex((prev) => (prev - 1 + maxIndex) % maxIndex);
   };
 
   if (!product) {
@@ -190,333 +362,440 @@ const ProductDetailPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>{product.name} | Launchory Source Code</title>
+        <title>{`${product.name} | Launchory`}</title>
         <meta name="description" content={product.description} />
       </Helmet>
 
-      <div className="container mx-auto max-w-6xl">
-        {/* Breadcrumbs */}
-        <div className="mb-8 mt-4">
-          <Breadcrumb
+      {/* Breadcrumb */}
+      <div className="bg-white border-b">
+        <div className="container mx-auto px-4 py-3">
+          <Breadcrumb 
             items={[
-              {
-                label: 'Home',
-                path: '/',
-                icon: (
-                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-                  </svg>
-                )
-              },
-              {
-                label: 'Source Code',
-                path: '/source-code',
-              },
-              {
-                label: product.name,
-              }
-            ]}
+              { label: 'Home', path: '/' },
+              { label: 'Source Code', path: '/source-code' },
+              { label: product.name, path: '#' }
+            ]} 
           />
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* Left Column - Images */}
-          <div>
-            <div className="bg-white p-2 rounded-2xl shadow-lg overflow-hidden mb-4 border border-gray-100">
-              <img 
-                src={activeImage} 
-                alt={product.name} 
-                className="w-full h-[400px] object-cover rounded-xl"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://via.placeholder.com/800x600?text=Product+Image';
-                }}
-              />
-            </div>
-            
-            {/* Image Gallery */}
-            {product.gallery && product.gallery.length > 0 && (
-              <div className="grid grid-cols-4 gap-3">
-                <div 
-                  className={`cursor-pointer rounded-xl overflow-hidden border-2 ${activeImage === product.image ? 'border-purple-500' : 'border-transparent'}`}
-                  onClick={() => setActiveImage(product.image)}
-                >
-                  <img 
-                    src={product.image} 
-                    alt="Main" 
-                    className="w-full h-20 object-cover"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150?text=Image';
-                    }}
-                  />
-                </div>
-                
-                {product.gallery.map((img, index) => (
-                  <div 
-                    key={index}
-                    className={`cursor-pointer rounded-xl overflow-hidden border-2 ${activeImage === img ? 'border-purple-500' : 'border-transparent'}`}
-                    onClick={() => setActiveImage(img)}
-                  >
-                    <img 
-                      src={img} 
-                      alt={`Gallery ${index + 1}`} 
-                      className="w-full h-20 object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150?text=Image';
-                      }}
-                    />
-                  </div>
+      {/* Product Hero Section */}
+      <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
+        <div className="container mx-auto px-4 py-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 mb-8">
+                <FiShoppingCart className="w-4 h-4 mr-2" />
+                <span>Complete E-commerce Solution</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
+                {product?.name}
+              </h1>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                {product?.description}
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 mb-12">
+                {product?.techStack?.slice(0, 5).map((tech, index) => (
+                  <span key={index} className="px-4 py-2 bg-white/10 rounded-full text-sm">{tech}</span>
                 ))}
               </div>
-            )}
-            
-            {/* YouTube Video */}
-            {product.youtubeId && (
-              <div className="mt-8">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">Product Demo Video</h3>
-                <div className="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden shadow-lg">
-                  <iframe 
-                    src={`https://www.youtube.com/embed/${product.youtubeId}`} 
-                    title="Product Demo"
-                    className="w-full h-full rounded-xl"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </div>
-            )}
+            </motion.div>
           </div>
-          
-          {/* Right Column - Product Info */}
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{product.name}</h1>
-            
-            <div className="flex items-center mb-6">
-              <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                ${product.price}
-              </div>
-              <div className="ml-4 bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
-                One-time payment
-              </div>
-            </div>
-            
-            {/* Tabs */}
-            <div className="mb-6 border-b border-gray-200">
-              <nav className="-mb-px flex space-x-6" aria-label="Tabs">
-                <button
-                  onClick={() => setActiveTab('overview')}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'overview' ? 'border-purple-500 text-purple-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}
-                >
-                  Overview
-                </button>
-                <button
-                  onClick={() => setActiveTab('features')}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'features' ? 'border-purple-500 text-purple-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}
-                >
-                  Features
-                </button>
-                <button
-                  onClick={() => setActiveTab('tech')}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'tech' ? 'border-purple-500 text-purple-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}
-                >
-                  Tech Stack
-                </button>
-              </nav>
-            </div>
-            
-            {/* Tab Content */}
-            <div className="mb-8">
-              {activeTab === 'overview' && (
-                <div>
-                  <p className="text-gray-600 mb-4">
-                    {product.longDescription || product.description}
-                  </p>
-                </div>
-              )}
-              
-              {activeTab === 'features' && (
-                <div>
-                  <ul className="space-y-3">
-                    {product.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
-                        <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3">
-                          <svg className="h-4 w-4 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              
-              {activeTab === 'tech' && (
-                <div>
-                  {product.techStack ? (
-                    <div className="flex flex-wrap gap-2">
-                      {product.techStack.map((tech, index) => (
-                        <span key={index} className="bg-gray-100 text-gray-800 px-3 py-1.5 rounded-lg text-sm font-medium">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-gray-600">No tech stack information available.</p>
-                  )}
-                </div>
-              )}
-            </div>
-            
-            {/* Purchase Form */}
-            <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 mb-6">
-              <h3 className="text-lg font-bold text-gray-800 mb-4">Ready to Purchase?</h3>
-              
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-                  Your Email Address
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200"
-                    required
-                  />
-                </div>
-                <p className="text-sm text-gray-500 mt-2 pl-2">
-                  We'll send your download link and receipt to this email.
-                </p>
-              </div>
-              
-              {error && (
-                <div className="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mb-4">
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <svg className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                      </svg>
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-sm">{error}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-              
-              <motion.button
-                onClick={handleCheckout}
+        </div>
+      </div>
+
+      {/* Product Info */}
+      <div className="bg-white border-b">
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Image Gallery */}
+            <div className="space-y-4">
+              <motion.div 
+                className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden cursor-pointer group"
+                onClick={() => setIsGalleryOpen(true)}
                 whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg flex items-center justify-center"
-                disabled={isLoading}
+                transition={{ duration: 0.2 }}
               >
-                {isLoading ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                    Processing...
-                  </>
-                ) : (
-                  <>Buy Now - ${product.price}</>
-                )}
-              </motion.button>
+                <img 
+                  src={activeImage} 
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
+                  <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    Click to view gallery
+                  </span>
+                </div>
+              </motion.div>
+              {product.gallery && (
+                <div className="grid grid-cols-4 gap-4">
+                  {[product.image, ...(product.gallery || [])].map((img, idx) => (
+                    <motion.div 
+                      key={idx}
+                      className={`aspect-video bg-gray-100 rounded-lg overflow-hidden cursor-pointer ${
+                        activeImage === img ? 'ring-2 ring-purple-500' : ''
+                      }`}
+                      onClick={() => setActiveImage(img)}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <img 
+                        src={img} 
+                        alt={`${product.name} ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Product Info */}
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <h1 className="text-4xl font-bold text-gray-900">{product.name}</h1>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => setShowShareModal(true)}
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                >
+                  <FiShare2 className="w-5 h-5" />
+                  Share
+                </motion.button>
+              </div>
               
-              <div className="mt-4 text-center">
-                <div className="flex justify-center items-center space-x-3">
-                  <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                  <span className="text-sm text-gray-600">Secure payment via Stripe</span>
+              <p className="text-xl text-gray-600">{product.description}</p>
+              
+              <div className="flex items-center justify-between py-4 border-y">
+                <div className="text-3xl font-bold text-gray-900">₹{product.price}</div>
+                <div className="flex items-center gap-4">
+                  <span className="text-sm text-gray-500">★★★★★ (5.0)</span>
+                  <span className="text-sm text-gray-500">100+ sales</span>
                 </div>
               </div>
-            </div>
-            
-            {/* Additional Info */}
-            <div className="bg-blue-50 p-5 rounded-xl">
-              <h3 className="font-bold text-gray-800 mb-2 flex items-center">
-                <svg className="w-5 h-5 text-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                What's Included
-              </h3>
-              <ul className="space-y-2 text-gray-700 mt-3">
-                <li className="flex items-start">
-                  <svg className="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>Complete source code with documentation</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>Installation and setup instructions</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>6 months of updates and bug fixes</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>License for unlimited projects</span>
-                </li>
-              </ul>
+
+              <div className="space-y-4">
+                <input
+                  type="email"
+                  placeholder="Enter your email to purchase"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                />
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleCheckout}
+                  disabled={isLoading}
+                  className="w-full py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold rounded-lg transition duration-300 shadow-lg disabled:opacity-50"
+                >
+                  {isLoading ? 'Processing...' : 'Purchase Now'}
+                </motion.button>
+                {error && (
+                  <p className="text-red-500 text-sm">{error}</p>
+                )}
+              </div>
+
+              <div className="border-t pt-6">
+                <h3 className="text-lg font-semibold mb-4">Tech Stack</h3>
+                <div className="flex flex-wrap gap-2">
+                  {product.techStack?.map((tech, idx) => (
+                    <motion.span
+                      key={idx}
+                      className="px-3 py-1 bg-gray-100 rounded-full text-sm"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        
-        {/* Related Products */}
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">You May Also Like</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {products
-              .filter(p => p.id !== product.id)
-              .map(relatedProduct => (
-                <div 
-                  key={relatedProduct.id} 
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl border border-gray-100"
+      </div>
+
+      {/* Features Section */}
+      <div className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Complete Feature Set</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              {[
+                {
+                  title: "Shopping Experience",
+                  description: "Product listings, cart, checkout flow",
+                  icon: FiShield,
+                  gradient: "from-purple-500 to-indigo-500"
+                },
+                {
+                  title: "Secure Payments",
+                  description: "Stripe integration with webhooks",
+                  icon: FiCpu,
+                  gradient: "from-blue-500 to-cyan-500"
+                },
+                {
+                  title: "User System",
+                  description: "Authentication & user profiles",
+                  icon: FiUsers,
+                  gradient: "from-indigo-500 to-purple-500"
+                },
+                {
+                  title: "Admin Panel",
+                  description: "Complete product management",
+                  icon: FiGlobe,
+                  gradient: "from-cyan-500 to-blue-500"
+                },
+                {
+                  title: "Performance",
+                  description: "Optimized for fast loading",
+                  icon: FiZap,
+                  gradient: "from-purple-500 to-indigo-500"
+                },
+                {
+                  title: "Responsive Design",
+                  description: "Works on all devices",
+                  icon: FiPackage,
+                  gradient: "from-indigo-500 to-purple-500"
+                }
+              ].map((feature, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ y: -5 }}
+                  className="group relative bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="h-48 bg-gray-100 relative overflow-hidden">
+                  <div className={`w-12 h-12 mb-4 rounded-lg bg-gradient-to-br ${feature.gradient} flex items-center justify-center transform group-hover:scale-110 transition-transform duration-200`}>
+                    <feature.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* What's Included Section */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 mb-16">
+              <h3 className="text-2xl font-bold text-gray-900 mb-8">What's Included</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  { text: "Source code & documentation", icon: FiCode },
+                  { text: "6 months priority support", icon: FiUsers },
+                  { text: "Regular updates", icon: FiGift },
+                  { text: "Installation guide", icon: FiBook },
+                  { text: "API integration docs", icon: FiGlobe },
+                  { text: "Performance tips", icon: FiZap }
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-center bg-gray-50 rounded-lg p-4"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center mr-4">
+                      <item.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-gray-800 font-medium">{item.text}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonials Section */}
+      <div className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Trusted by Leading Brands</h2>
+              <p className="text-xl text-gray-600">See what our customers have to say about their experience</p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-gray-50 rounded-xl p-6"
+                >
+                  <div className="flex items-center mb-4">
                     <img 
-                      src={relatedProduct.image} 
-                      alt={relatedProduct.name} 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x200?text=Product+Image';
-                      }}
+                      src={testimonial.image} 
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full mr-4"
                     />
-                    <div className="absolute top-4 right-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1 rounded-full font-bold shadow-lg">
-                      ${relatedProduct.price}
+                    <div>
+                      <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+                      <p className="text-sm text-gray-600">{testimonial.role} at {testimonial.company}</p>
                     </div>
                   </div>
-                  
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{relatedProduct.name}</h3>
-                    <p className="text-gray-600 mb-4 line-clamp-2">{relatedProduct.description}</p>
-                    
-                    <Link 
-                      to={`/source-code/${relatedProduct.id}`}
-                      className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-lg transition duration-300 block text-center"
-                    >
-                      View Details
-                    </Link>
-                  </div>
-                </div>
+                  <p className="text-gray-600">{testimonial.text}</p>
+                </motion.div>
               ))}
+            </div>
           </div>
+        </div>
+      </div>
+
+      {/* Share Modal */}
+      <Modal isOpen={showShareModal} onClose={() => setShowShareModal(false)}>
+        <div className="relative bg-white rounded-2xl overflow-hidden">
+          {/* Header with gradient background */}
+          <div className="bg-gradient-to-r from-gray-900 to-gray-800 px-6 py-4">
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-medium text-white">Share this product</h3>
+              <button 
+                onClick={() => setShowShareModal(false)}
+                className="p-1 hover:bg-white/10 rounded-full transition-colors"
+              >
+                <FiX className="w-5 h-5 text-white/80" />
+              </button>
+            </div>
+          </div>
+
+          {/* Share options */}
+          <div className="p-6">
+            <div className="grid grid-cols-2 gap-4">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => handleShare('twitter')}
+                className="group flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-[#1DA1F2] hover:bg-[#1DA1F2]/5 transition-all duration-200"
+              >
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#1DA1F2]/10 group-hover:bg-[#1DA1F2]/20 mb-2">
+                  <FaTwitter className="w-5 h-5 text-[#1DA1F2]" />
+                </div>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-[#1DA1F2]">Twitter</span>
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => handleShare('facebook')}
+                className="group flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-[#4267B2] hover:bg-[#4267B2]/5 transition-all duration-200"
+              >
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#4267B2]/10 group-hover:bg-[#4267B2]/20 mb-2">
+                  <FaFacebook className="w-5 h-5 text-[#4267B2]" />
+                </div>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-[#4267B2]">Facebook</span>
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => handleShare('linkedin')}
+                className="group flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-[#0077B5] hover:bg-[#0077B5]/5 transition-all duration-200"
+              >
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#0077B5]/10 group-hover:bg-[#0077B5]/20 mb-2">
+                  <FaLinkedin className="w-5 h-5 text-[#0077B5]" />
+                </div>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-[#0077B5]">LinkedIn</span>
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => handleShare('copy')}
+                className="group flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-gray-900 hover:bg-gray-50 transition-all duration-200"
+              >
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 group-hover:bg-gray-200 mb-2">
+                  <FaLink className="w-5 h-5 text-gray-600 group-hover:text-gray-900" />
+                </div>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Copy Link</span>
+              </motion.button>
+            </div>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Toast for copy success */}
+      <Toast 
+        show={showToast} 
+        onClose={() => setShowToast(false)}
+        type="success"
+        message="Link copied to clipboard!"
+      />
+
+      {/* Image Gallery Modal */}
+      <Modal isOpen={isGalleryOpen} onClose={() => setIsGalleryOpen(false)}>
+        <div className="relative">
+          <div className="absolute top-4 right-4 z-10">
+            <button 
+              onClick={() => setIsGalleryOpen(false)}
+              className="p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
+            >
+              <FiX className="w-6 h-6" />
+            </button>
+          </div>
+          
+          <div className="relative aspect-video">
+            <img
+              src={[product.image, ...(product.gallery || [])][currentImageIndex]}
+              alt={`${product.name} ${currentImageIndex + 1}`}
+              className="w-full h-full object-contain"
+            />
+            
+            <button
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
+            >
+              <FiChevronLeft className="w-6 h-6" />
+            </button>
+            
+            <button
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
+            >
+              <FiChevronRight className="w-6 h-6" />
+            </button>
+
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+              {[product.image, ...(product.gallery || [])].map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    currentImageIndex === idx ? 'bg-white' : 'bg-white/50'
+                  }`}
+                  onClick={() => setCurrentImageIndex(idx)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Sticky Purchase Bar (Mobile) */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 lg:hidden">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <div className="text-sm text-gray-600">Price</div>
+            <div className="text-xl font-bold text-gray-900">₹{product.price}</div>
+          </div>
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={handleCheckout}
+            disabled={isLoading}
+            className="flex-1 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold rounded-lg transition duration-300 shadow-lg disabled:opacity-50"
+          >
+            {isLoading ? 'Processing...' : 'Purchase Now'}
+          </motion.button>
         </div>
       </div>
     </div>

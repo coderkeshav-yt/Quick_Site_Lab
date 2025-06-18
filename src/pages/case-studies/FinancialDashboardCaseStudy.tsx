@@ -4,6 +4,7 @@ import { FiArrowLeft, FiExternalLink, FiDollarSign, FiTrendingUp, FiUsers, FiBar
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { scrollToPortfolio } from '../../utils/scrollUtils';
 
 // Type Definitions
 interface GalleryImageProps {
@@ -162,6 +163,12 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
 const FinancialDashboardCaseStudy: React.FC = () => {
   const history = useHistory();
 
+  const handleBackClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    history.push('/');
+    scrollToPortfolio();
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -175,15 +182,15 @@ const FinancialDashboardCaseStudy: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Link to="/portfolio">
+              <a href="/" onClick={handleBackClick}>
                 <motion.div
                   whileHover={{ x: -5 }}
                   className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors cursor-pointer group"
                 >
                   <FiArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" /> 
-                  Back to Work
+                  Back to Portfolio
                 </motion.div>
-              </Link>
+              </a>
               
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

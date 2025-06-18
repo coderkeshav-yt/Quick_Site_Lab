@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://yourdomain.com/</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/about</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/services</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/portfolio</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/contact</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/blog/1</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/blog/2</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/blog/3</loc>
+  </url>
+</urlset> 

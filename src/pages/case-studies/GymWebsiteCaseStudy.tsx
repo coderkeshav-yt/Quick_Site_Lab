@@ -4,6 +4,7 @@ import { FiArrowLeft, FiExternalLink, FiActivity, FiUsers, FiCalendar, FiTrendin
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { scrollToPortfolio } from '../../utils/scrollUtils';
 
 // Type Definitions
 interface GalleryImageProps {
@@ -162,6 +163,12 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
 const GymWebsiteCaseStudy: React.FC = () => {
   const history = useHistory();
 
+  const handleBackClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    history.push('/');
+    scrollToPortfolio();
+  };
+
   // Sample images - replace with actual gym website screenshots
   const projectImages: ImageType[] = [
     {
@@ -198,7 +205,7 @@ const GymWebsiteCaseStudy: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <Link to="/portfolio">
+          <a href="/" onClick={handleBackClick}>
             <motion.div
               whileHover={{ x: -5 }}
               className="inline-flex items-center text-white/80 hover:text-white mb-12 transition-colors cursor-pointer group"
@@ -206,7 +213,7 @@ const GymWebsiteCaseStudy: React.FC = () => {
               <FiArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" /> 
               Back to Portfolio
             </motion.div>
-          </Link>
+          </a>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div

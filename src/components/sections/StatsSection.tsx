@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
-import { FiUsers, FiCheckCircle, FiAward, FiCode, FiBriefcase, FiGlobe } from 'react-icons/fi';
+import { FiUsers, FiCheckCircle, FiAward, FiCode, FiBriefcase, FiGlobe, FiStar } from 'react-icons/fi';
+import { FaCrown } from 'react-icons/fa';
 
 interface StatItemProps {
   icon: React.ReactNode;
@@ -52,31 +53,31 @@ const StatItem: React.FC<StatItemProps> = ({ icon, value, label, description, de
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={controls}
-      className="relative p-8 rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white border border-gray-100"
-      whileHover={{ y: -5, transition: { duration: 0.3 } }}
+      className="relative p-10 rounded-3xl overflow-hidden group shadow-xl border border-transparent bg-white/40 backdrop-blur-2xl transition-all duration-300 hover:scale-[1.045] hover:border-gradient-to-r hover:from-primary hover:to-accent"
+      whileHover={{ y: -10, scale: 1.05, transition: { duration: 0.3 } }}
+      style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.10)' }}
     >
-      {/* Background gradient with subtle animation */}
-      <div className={`absolute inset-0 ${color} opacity-5 rounded-2xl group-hover:opacity-10 transition-opacity duration-300`}></div>
-      
-      {/* Top accent bar */}
-      <div className={`absolute top-0 left-0 right-0 h-1 ${accentColor}`}></div>
-      
-      {/* Decorative elements */}
-      <div className="absolute -right-8 -bottom-8 w-32 h-32 rounded-full bg-gradient-to-br from-gray-50 to-gray-100 opacity-50"></div>
-      <div className="absolute -left-4 -top-4 w-16 h-16 rounded-full bg-gradient-to-br from-gray-50 to-gray-100 opacity-30"></div>
-      
-      <div className="relative z-10">
-        <div className={`inline-flex items-center justify-center p-4 ${color} bg-opacity-10 ${accentColor} bg-opacity-20 text-white rounded-xl mb-6 shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
-          <span className="h-7 w-7">{icon}</span>
+      {/* Animated gradient border */}
+      <div className="absolute inset-0 z-0 rounded-3xl pointer-events-none animate-gradient-x bg-gradient-to-r from-primary via-accent to-primary opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+      {/* Glassmorphism overlay */}
+      <div className="absolute inset-0 bg-white/60 backdrop-blur-2xl rounded-3xl z-0" />
+      {/* Icon with glow */}
+      <div className="relative z-10 flex items-center justify-center mb-7">
+        <div className={`inline-flex items-center justify-center p-5 bg-white/30 rounded-2xl shadow-lg group-hover:shadow-2xl transition-all duration-300`}>
+          {typeof icon === 'string' ? (
+            <img src={icon} alt="stat icon" className="h-12 w-12 object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-300" style={{ filter: 'drop-shadow(0 0 18px #a5b4fc)' }} />
+          ) : (
+            <span className="h-10 w-10 text-4xl text-white drop-shadow-lg group-hover:scale-110 transition-transform duration-300" style={{ filter: 'drop-shadow(0 0 18px #a5b4fc)' }}>{icon}</span>
+          )}
         </div>
-        
-        <h3 ref={numberRef} className={`text-4xl md:text-5xl font-bold mb-3 bg-clip-text text-transparent ${accentColor}`}>
-          {value}
-        </h3>
-        
-        <p className="text-gray-800 font-semibold text-lg mb-2">{label}</p>
-        {description && <p className="text-gray-500 text-sm">{description}</p>}
+        <div className="absolute -z-10 w-20 h-20 rounded-full blur-2xl opacity-30 group-hover:opacity-60 transition-all duration-300" style={{ background: 'radial-gradient(circle, #a5b4fc 0%, transparent 70%)' }} />
       </div>
+      {/* Animated number with shimmer and luxury font */}
+      <h3 ref={numberRef} className={`text-5xl md:text-6xl font-extrabold mb-3 bg-clip-text text-transparent ${accentColor} relative z-10 tracking-tight animate-shimmer-premium`} style={{ fontFamily: 'Poppins, Inter, Segoe UI, Arial, sans-serif', letterSpacing: '0.01em' }}>
+        {value}
+      </h3>
+      <p className="text-gray-900 font-semibold text-lg mb-2 z-10 relative tracking-wide" style={{ fontFamily: 'Inter, Segoe UI, Arial, sans-serif' }}>{label}</p>
+      {description && <p className="text-gray-700 text-sm z-10 relative" style={{ fontFamily: 'Inter, Segoe UI, Arial, sans-serif' }}>{description}</p>}
     </motion.div>
   );
 };
@@ -84,7 +85,7 @@ const StatItem: React.FC<StatItemProps> = ({ icon, value, label, description, de
 const StatsSection: React.FC = () => {
   const stats = [
     {
-      icon: <FiUsers className="stroke-[2.5px]" />,
+      icon: '/images/icons/1.png',
       value: "250+",
       label: "Projects Delivered",
       description: "Successful projects across various industries",
@@ -93,7 +94,7 @@ const StatsSection: React.FC = () => {
       accentColor: "bg-gradient-to-r from-blue-500 to-indigo-600"
     },
     {
-      icon: <FiCheckCircle className="stroke-[2.5px]" />,
+      icon: '/images/icons/2.png',
       value: "98%",
       label: "Client Satisfaction",
       description: "Based on post-project client surveys",
@@ -102,7 +103,7 @@ const StatsSection: React.FC = () => {
       accentColor: "bg-gradient-to-r from-purple-500 to-pink-600"
     },
     {
-      icon: <FiGlobe className="stroke-[2.5px]" />,
+      icon: '/images/icons/3.png',
       value: "40+",
       label: "Countries Served",
       description: "Global clients across 6 continents",
@@ -111,7 +112,7 @@ const StatsSection: React.FC = () => {
       accentColor: "bg-gradient-to-r from-amber-500 to-orange-600"
     },
     {
-      icon: <FiCode className="stroke-[2.5px]" />,
+      icon: '/images/icons/4.png',
       value: "1.2M+",
       label: "Lines of Code",
       description: "Clean, efficient, and maintainable",
@@ -122,44 +123,47 @@ const StatsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden bg-gray-50">
-      {/* Background patterns */}
-      <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/dot-pattern_qdcvml.svg')] bg-repeat opacity-5 pointer-events-none"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none"></div>
-      
+    <section className="py-28 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
+      {/* Subtle animated blurred shape background */}
+      <div className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-primary/20 blur-3xl opacity-30 animate-float pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[320px] h-[320px] rounded-full bg-accent/20 blur-2xl opacity-20 animate-float2 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Premium badge above title */}
+        <div className="flex justify-center mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold shadow-lg text-sm uppercase tracking-wider">
+            <FiStar className="text-yellow-300" /> Premium Results
+          </span>
+        </div>
         {/* Section header with animated underline */}
         <div className="text-center mb-16 relative">
-          <motion.div 
-            className="absolute left-1/2 -bottom-4 h-1 bg-gradient-to-r from-primary to-accent rounded-full"
-            initial={{ width: 0, x: '-50%' }}
-            whileInView={{ width: '80px', x: '-50%' }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            viewport={{ once: true }}
-          />
-          
           <motion.h2 
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-gray-900 mb-4"
+            className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight drop-shadow-xl"
           >
-            Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Impact</span> in Numbers
+            Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent animate-gradient-x">Impact</span> in Numbers
           </motion.h2>
+          <motion.div 
+            className="mx-auto h-2 w-32 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse"
+            initial={{ width: 0 }}
+            whileInView={{ width: '8rem' }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            viewport={{ once: true }}
+          />
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto font-light"
+            className="text-xl text-gray-700 max-w-3xl mx-auto font-light mt-6"
           >
             Delivering measurable results and exceptional value for our clients worldwide
           </motion.p>
         </div>
-        
-        {/* Stats grid with improved spacing and layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+        {/* Stats grid with more whitespace */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
           {stats.map((stat, index) => (
             <StatItem
               key={index}
@@ -173,29 +177,54 @@ const StatsSection: React.FC = () => {
             />
           ))}
         </div>
-        
-        {/* Call to action */}
+        {/* Premium CTA */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-20 text-center"
         >
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+          <p className="text-gray-700 mb-8 max-w-2xl mx-auto text-lg">
             Join hundreds of satisfied clients who have transformed their digital presence with our expert services.
           </p>
           <a 
             href="/contact" 
-            className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-medium hover:shadow-lg transition-shadow duration-300"
+            className="inline-flex items-center px-8 py-4 rounded-2xl bg-gradient-to-r from-primary to-accent text-white font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-accent animate-glow"
+            style={{ boxShadow: '0 0 32px 0 #a5b4fc33' }}
           >
             Start Your Project
-            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="ml-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
           </a>
         </motion.div>
       </div>
+      {/* Custom shimmer and float animations */}
+      <style>{`
+        .animate-shimmer-premium {
+          background-size: 200% 100%;
+          animation: shimmerPremium 2.5s linear infinite;
+        }
+        @keyframes shimmerPremium {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
+        .animate-float {
+          animation: floatY 7s ease-in-out infinite alternate;
+        }
+        .animate-float2 {
+          animation: floatX 9s ease-in-out infinite alternate;
+        }
+        @keyframes floatY {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(40px); }
+        }
+        @keyframes floatX {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-32px); }
+        }
+      `}</style>
     </section>
   );
 };

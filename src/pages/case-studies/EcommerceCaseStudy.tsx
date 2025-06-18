@@ -4,6 +4,7 @@ import { FiArrowLeft, FiExternalLink, FiShoppingCart, FiTruck, FiTrendingUp, FiU
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { scrollToPortfolio } from '../../utils/scrollUtils';
 
 // Type Definitions
 interface GalleryImageProps {
@@ -162,6 +163,12 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
 const EcommerceCaseStudy: React.FC = () => {
   const history = useHistory();
 
+  const handleBackClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    history.push('/');
+    scrollToPortfolio();
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -175,15 +182,15 @@ const EcommerceCaseStudy: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Link to="/portfolio">
+              <a href="/" onClick={handleBackClick}>
                 <motion.div
                   whileHover={{ x: -5 }}
                   className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors cursor-pointer group"
                 >
                   <FiArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" /> 
-                  Back to Work
+                  Back to Portfolio
                 </motion.div>
-              </Link>
+              </a>
               
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -334,6 +341,38 @@ const EcommerceCaseStudy: React.FC = () => {
               delay={3}
             />
           </div>
+
+          {/* YouTube Video Section */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-16 max-w-5xl mx-auto"
+          >
+            <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 p-6 md:p-8 rounded-2xl shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl"></div>
+              <div className="relative">
+                <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-xl">
+                  <iframe
+                    src="https://www.youtube.com/embed/-MPDkUPrRTc"
+                    title="Project Demo Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full shadow-lg transition-transform duration-700 hover:scale-[1.01]"
+                  ></iframe>
+                </div>
+                <div className="mt-6 text-center">
+                  <h3 className="text-xl font-semibold text-white mb-2">Project Showcase Video</h3>
+                  <p className="text-gray-300 text-sm">Watch our e-commerce solution in action</p>
+                </div>
+              </div>
+              
+              {/* Decorative Elements */}
+              <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full blur-2xl"></div>
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl"></div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
