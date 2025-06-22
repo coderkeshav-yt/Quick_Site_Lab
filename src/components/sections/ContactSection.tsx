@@ -159,9 +159,7 @@ const ContactSection: React.FC = () => {
                     <div className="ml-4">
                       <h4 className="text-lg font-semibold text-gray-900">Email Us</h4>
                       <p className="mt-1 text-gray-600 hover:text-primary transition-colors">
-                        <a href="mailto:cybridaagency@gmail.com">cybridaagency@gmail.com
-
-</a>
+                        <a href="mailto:contact@cybrida.in">contact@cybrida.in</a>
                       </p>
                       <p className="mt-1 text-gray-600 hover:text-primary transition-colors">
                         <a href="mailto:cybridaagency@gmail.com">cybridaagency@gmail.com

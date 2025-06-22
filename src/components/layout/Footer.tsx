@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiTwitter, FiFacebook, FiInstagram, FiLinkedin } from 'react-icons/fi';
+import { FiTwitter, FiFacebook, FiInstagram, FiLinkedin, FiYoutube } from 'react-icons/fi';
 
 const Footer: React.FC = () => {
   return (
@@ -25,6 +25,9 @@ const Footer: React.FC = () => {
               </a>
               <a href="https://www.linkedin.com/in/keshav-singh-4757b9369/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <span className="h-6 w-6"><FiLinkedin /></span>
+              </a>
+              <a href="https://www.youtube.com/@cybrida" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
+                <span className="h-6 w-6"><FiYoutube /></span>
               </a>
             </div>
           </div>
@@ -79,7 +82,7 @@ const Footer: React.FC = () => {
             <address className="not-italic text-gray-300">
               <p className="mb-2">New Delhi</p>
               <p className="mb-2">India, 110005</p>
-              <p className="mb-2">Email: cybridaagency@gmail.com</p>
+              <p className="mb-2">Email: contact@cybrida.in</p>
               <p>Phone: +91 8579956949</p>
             </address>
           </div>

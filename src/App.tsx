@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Layout from './components/layout/Layout';
 import ScrollToTop from './components/ui/ScrollToTop';
 import HomePage from './pages/HomePage';
@@ -68,6 +69,7 @@ const App: React.FC = () => {
             </Switch>
           </div>
         </Layout>
+        <Analytics />
       </Router>
     </AuthProvider>
   );
