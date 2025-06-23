@@ -4,6 +4,7 @@ import FeaturesSection from '../components/sections/FeaturesSection';
 import StatsSection from '../components/sections/StatsSection';
 import ProcessSection from '../components/sections/ProcessSection';
 import PortfolioSection from '../components/sections/PortfolioSection';
+import DesignsSection from '../components/sections/DesignsSection';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import BlogSection from '../components/sections/BlogSection';
 import ClientsSection from '../components/sections/ClientsSection';
@@ -42,6 +43,7 @@ const HomePage: React.FC = () => {
       <FeaturesSection />
       <ProcessSection />
       <PortfolioSection />
+      <DesignsSection />
       <TestimonialsSection />
       <ClientsSection />
       <BlogSection />
