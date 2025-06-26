@@ -8,25 +8,25 @@ const designs = [
     id: 1,
     title: 'Pizza E-commerce App',
     description: 'Modern food delivery app interface with seamless ordering experience',
-    category: 'Mobile App',
+    category: 'Web App',
     link: 'https://www.figma.com/proto/j7B2QzzCJ0T45eurr35J0c/Untitled?node-id=1-2&t=L5Unyz6t8vaJDuVE-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2',
     preview: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750691280/pizza_e-commerce_kkhnup.png'
   },
   {
     id: 2,
-    title: 'Mobile App Design',
-    description: 'Modern mobile app UI/UX design',
-    category: 'Mobile',
-    link: 'https://www.figma.com/community/file/example-mobile-app',
-    preview: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1719158400/mobile-app-preview.jpg'
+    title: 'MotoCare Companion App',
+    description: 'Smart bike interface for effortless maintenance tracking and service booking',
+    category: 'Web App',
+    link: 'https://www.figma.com/proto/PDzUOH86qMCxHjLChhmfNW/Royal-Enfield-Bike-design?node-id=1-2&p=f&t=EahPCIwZCOGKR3p4-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
+    preview: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750950545/bike_c51s8t.png'
   },
   {
     id: 3,
-    title: 'Dashboard Template',
-    description: 'Admin dashboard with analytics',
-    category: 'Web',
-    link: 'https://www.figma.com/community/file/example-dashboard',
-    preview: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1719158400/dashboard-preview.jpg'
+    title: 'Mac D Digital Mall',
+    description: 'Next-gen online mall for exclusive Mac D drops and smooth shopping vibes',
+    category: 'Mobile App',
+    link: 'https://www.figma.com/proto/LhQupBZFDo8tMA4HvWrtoe/McDonald-App-Prototype--Community-?node-id=1-1553&p=f&t=8UlU1w0W4nJekpXd-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
+    preview: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1750952241/000_sg6u97.png'
   },
 ];
 
