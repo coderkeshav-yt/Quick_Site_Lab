@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Cybrida",
+  "name": "Cybrida – Web Development & Digital Solutions",
+  "description": "Cybrida is a leading web development agency delivering modern, scalable websites and digital experiences.",
   "icons": [
     {
       "src": "favicon.ico",
