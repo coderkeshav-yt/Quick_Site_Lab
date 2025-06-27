@@ -21,9 +21,9 @@ const TestimonialsSection: React.FC = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Animesh Doshi",
       position: "CEO",
-      company: "TechStart Inc.",
+      company: "Natural Puff",
       image: testimonial1,
       content: "Working with Cybrida was a game-changer for our business. They completely transformed our online presence and helped us reach a wider audience. The team was professional, responsive, and delivered beyond our expectations.",
       rating: 5
@@ -39,12 +39,12 @@ const TestimonialsSection: React.FC = () => {
     },
     {
       id: 3,
-      name: "Emily Rodriguez",
+      name: "Abhay Singh",
       position: "Founder",
       company: "Artisan Crafts",
       image: testimonial3,
       content: "As a small business owner, I needed a website that would help me compete with larger companies. Cybrida delivered exactly that - a beautiful, functional site that has helped my business grow exponentially.",
-      rating: 5
+      rating: 4
     }
   ];
   

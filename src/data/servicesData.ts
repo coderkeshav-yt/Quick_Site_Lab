@@ -320,7 +320,7 @@ export const servicesData: ServiceDetail[] = [
     ],
     testimonials: [
       {
-        name: 'Emily Rodriguez',
+        name: 'Abhay Singh',
         company: 'HealthTech Solutions',
         quote: 'Cybrida completely transformed our healthcare application with their thoughtful UI/UX design. Patient engagement increased by 60% following the redesign.',
         image: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1747402280/person4_sfkdju.jpg',
