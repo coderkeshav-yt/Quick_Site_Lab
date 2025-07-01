@@ -1,4 +1,42 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt for Cybrida
+# Last updated: 2025-07-01
+
+# Global rules
 User-agent: *
 Allow: /
-Sitemap: https://yourdomain.com/sitemap.xml
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /secure/
+Disallow: /*.json$
+Disallow: /*?*
+
+# Sitemap location
+Sitemap: https://www.cybrida.in/sitemap.xml
+
+# Crawl-delay: 10  # Uncomment and adjust if needed to limit crawl rate
+
+# Allow all web crawlers (unnecessary but explicit)
+User-agent: *
+Allow: /
+
+# Block specific bots if needed
+# User-agent: BadBot
+# Disallow: /
+
+# Allow media files to be crawled
+User-agent: Googlebot-Image
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.webp$
+
+# Allow ads bots (if using ads)
+User-agent: Mediapartners-Google
+Allow: /
+
+# Development and staging environments (if applicable)
+# User-agent: *
+# Disallow: /staging/
+# Disallow: /dev/

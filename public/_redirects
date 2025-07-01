@@ -1,0 +1,14 @@
+# Single Page Application (SPA) Routing
+/*    /index.html   200
+
+# Custom redirects (example)
+# /old-path    /new-path    301
+# /blog/:year/:month/:slug    /blog/:slug    301
+
+# Force HTTPS
+# https://*/*    https://www.cybrida.in/:splat    301!
+# http://*/*    https://www.cybrida.in/:splat    301!
+
+# Custom error pages
+# /404.html    404
+# /500.html    500
