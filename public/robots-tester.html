@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robots.txt Tester - Cybrida</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: #333;
+        }
+        h1 {
+            color: #2b5797;
+            margin-bottom: 1.5rem;
+        }
+        .test {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .test h2 {
+            margin-top: 0;
+            color: #2b5797;
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .warning {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        pre {
+            background: #f1f3f5;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .btn {
+            display: inline-block;
+            background: #2b5797;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+        .btn:hover {
+            background: #1e3f6e;
+        }
+    </style>
+</head>
+<body>
+    <h1>Robots.txt Tester</h1>
+    <p>This tool helps you verify that your robots.txt file is correctly configured for search engines.</p>
+    
+    <div class="test">
+        <h2>1. Robots.txt Fetch Test</h2>
+        <p>Let's check if we can fetch your robots.txt file:</p>
+        <div id="fetch-test">Testing...</div>
+    </div>
+    
+    <div class="test">
+        <h2>2. Critical Paths Check</h2>
+        <p>Verifying access to important website paths:</p>
+        <ul id="path-checks"></ul>
+    </div>
+    
+    <div class="test">
+        <h2>3. Sitemap Check</h2>
+        <p>Checking if your sitemap is properly referenced:</p>
+        <div id="sitemap-check">Checking...</div>
+    </div>
+    
+    <div class="test">
+        <h2>4. Common Issues</h2>
+        <div id="common-issues">Checking for common issues...</div>
+    </div>
+    
+    <a href="https://search.google.com/search-console" class="btn" target="_blank" rel="noopener">Open Google Search Console</a>
+    
+    <script>
+        // Test 1: Fetch robots.txt
+        fetch('/robots.txt')
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to fetch');
+                return response.text();
+            })
+            .then(text => {
+                const fetchTest = document.getElementById('fetch-test');
+                fetchTest.innerHTML = `
+                    <p class="success">✓ Successfully fetched robots.txt</p>
+                    <pre>${escapeHtml(text)}</pre>
+                `;
+                
+                // Check for sitemap reference
+                const sitemapCheck = document.getElementById('sitemap-check');
+                if (text.toLowerCase().includes('sitemap:')) {
+                    const sitemapUrl = text.match(/sitemap:\s*(https?:\/\/[^\s]+)/i);
+                    if (sitemapUrl && sitemapUrl[1]) {
+                        sitemapCheck.innerHTML = `
+                            <p class="success">✓ Sitemap found: <a href="${sitemapUrl[1]}" target="_blank">${sitemapUrl[1]}</a></p>
+                        `;
+                    } else {
+                        sitemapCheck.innerHTML = `
+                            <p class="warning">⚠ Sitemap directive found but could not parse URL</p>
+                            <pre>${text.match(/sitemap:.*/i)[0]}</pre>
+                        `;
+                    }
+                } else {
+                    sitemapCheck.innerHTML = `
+                        <p class="error">✗ No sitemap directive found in robots.txt</p>
+                        <p>Add this line to your robots.txt: <code>Sitemap: https://www.cybrida.in/sitemap.xml</code></p>
+                    `;
+                }
+                
+                // Check for common issues
+                const commonIssues = [];
+                
+                // Check if CSS/JS are blocked
+                if (text.match(/disallow:\s*\/\.(js|css)\$/i)) {
+                    commonIssues.push({
+                        type: 'error',
+                        message: 'CSS and JS files should not be blocked in robots.txt as they are needed for proper page rendering.'
+                    });
+                }
+                
+                // Check for overly restrictive rules
+                if (text.match(/disallow:\s*\//i) && !text.match(/allow:\s*\//i)) {
+                    commonIssues.push({
+                        type: 'error',
+                        message: 'Root directory (/) is disallowed, which blocks the entire site. Add `Allow: /` to allow crawling.'
+                    });
+                }
+                
+                // Display common issues
+                const issuesContainer = document.getElementById('common-issues');
+                if (commonIssues.length === 0) {
+                    issuesContainer.innerHTML = '<p class="success">✓ No critical issues found in your robots.txt</p>';
+                } else {
+                    issuesContainer.innerHTML = `
+                        <p class="${commonIssues.some(i => i.type === 'error') ? 'error' : 'warning'}">
+                            Found ${commonIssues.length} issue${commonIssues.length > 1 ? 's' : ''}:
+                        </p>
+                        <ul>
+                            ${commonIssues.map(issue => 
+                                `<li class="${issue.type}">${issue.message}</li>`
+                            ).join('')}
+                        </ul>
+                    `;
+                }
+            })
+            .catch(error => {
+                document.getElementById('fetch-test').innerHTML = `
+                    <p class="error">✗ Failed to fetch robots.txt</p>
+                    <p>Make sure the file exists at the root of your domain: <code>https://www.cybrida.in/robots.txt</code></p>
+                    <p>Error: ${error.message}</p>
+                `;
+            });
+        
+        // Test 2: Check important paths
+        const pathsToCheck = [
+            '/',
+            '/sitemap.xml',
+            '/robots.txt',
+            '/products/source-code',
+            '/contact',
+            '/privacy-policy',
+            '/terms-of-service'
+        ];
+        
+        const pathChecks = document.getElementById('path-checks');
+        
+        pathsToCheck.forEach(path => {
+            const li = document.createElement('li');
+            li.id = `path-${path.replace(/[^a-z0-9]/g, '-')}`;
+            li.textContent = `Checking ${path}...`;
+            pathChecks.appendChild(li);
+            
+            fetch(path, { method: 'HEAD' })
+                .then(response => {
+                    const status = response.status;
+                    let statusText = status;
+                    let statusClass = '';
+                    
+                    if (status >= 200 && status < 300) {
+                        statusText = `✓ ${status} OK`;
+                        statusClass = 'success';
+                    } else if (status >= 300 && status < 400) {
+                        statusText = `↪ ${status} Redirect`;
+                        statusClass = 'warning';
+                    } else if (status === 404) {
+                        statusText = `✗ ${status} Not Found`;
+                        statusClass = 'error';
+                    } else if (status >= 400) {
+                        statusText = `⚠ ${status} Error`;
+                        statusClass = 'error';
+                    }
+                    
+                    li.innerHTML = `<span class="${statusClass}">${statusText}</span> - <code>${path}</code>`;
+                })
+                .catch(error => {
+                    li.innerHTML = `<span class="error">✗ Error</span> - <code>${path}</code> - ${error.message}`;
+                });
+        });
+        
+        // Helper function to escape HTML
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>

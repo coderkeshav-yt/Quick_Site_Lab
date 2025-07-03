@@ -99,26 +99,60 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
     
-    <!-- Additional Schema Markup for WebPage -->
+    <!-- Enhanced Schema Markup -->
     <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://www.cybrida.in/#website",
+      "url": "https://www.cybrida.in/",
+      "name": "Cybrida",
+      "description": "Web Development & Digital Solutions for modern businesses",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.cybrida.in/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.cybrida.in/#organization",
+      "name": "Cybrida",
+      "url": "https://www.cybrida.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.cybrida.in/logo512.png",
+        "width": 512,
+        "height": 512
+      },
+      "sameAs": [
+        "https://www.facebook.com/cybrida",
+        "https://twitter.com/cybrida",
+        "https://www.linkedin.com/company/cybrida",
+        "https://www.instagram.com/cybrida"
+      ]
+    },
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
+      "@id": "https://www.cybrida.in/#webpage",
+      "url": "https://www.cybrida.in/",
+      "inLanguage": "en-US",
       "name": "Cybrida – Web Development & Digital Solutions",
-      "description": "We build high-performance, responsive websites for startups, businesses, and enterprises.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Cybrida",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.cybrida.in/logo512.png"
-        }
+      "description": "We build high-performance, responsive websites for startups, businesses, and enterprises. Specializing in custom web development and digital solutions.",
+      "isPartOf": {
+        "@id": "https://www.cybrida.in/#website"
       },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://www.cybrida.in/"
-      }
-    }
+      "about": {
+        "@id": "https://www.cybrida.in/#organization"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://www.cybrida.in/og-image.jpg"
+      },
+      "datePublished": "2023-01-01T00:00:00+00:00",
+      "dateModified": "2025-07-03T00:00:00+00:00"
+    }]
     </script>
   </head>
   <body>

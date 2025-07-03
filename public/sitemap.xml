@@ -6,51 +6,40 @@
   <!-- Home -->
   <url>
     <loc>https://www.cybrida.in/</loc>
-    <lastmod>2025-07-01</lastmod>
+    <lastmod>2025-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   
   <!-- Main Pages -->
   <url>
-    <loc>https://www.cybrida.in/about</loc>
-    <lastmod>2025-07-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.cybrida.in/services</loc>
-    <lastmod>2025-07-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.cybrida.in/portfolio</loc>
-    <lastmod>2025-07-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.cybrida.in/contact</loc>
-    <lastmod>2025-07-01</lastmod>
+    <lastmod>2025-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
-  <!-- Products/Services -->
+  <!-- Source Code Products -->
   <url>
     <loc>https://www.cybrida.in/products/source-code</loc>
-    <lastmod>2025-07-01</lastmod>
+    <lastmod>2025-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Add more product URLs as they become available -->
   
-  <!-- Blog/Articles (if applicable) -->
-  <!-- <url>
-    <loc>https://www.cybrida.in/blog/1</loc>
-    <lastmod>2025-07-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://www.cybrida.in/privacy-policy</loc>
+    <lastmod>2025-07-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.cybrida.in/terms-of-service</loc>
+    <lastmod>2025-07-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url> -->
   
   <!-- Legal Pages -->

@@ -1,5 +1,5 @@
 # robots.txt for Cybrida - Web Development & Digital Solutions
-# Last updated: 2025-07-02
+# Last updated: 2025-07-03
 
 # =======================================
 # Global Directives
@@ -8,31 +8,40 @@ User-agent: *
 Allow: /
 
 # =======================================
+# Sitemap Location (for search engines)
+# =======================================
+Sitemap: https://www.cybrida.in/sitemap.xml
+
+# =======================================
 # Disallowed Directories
 # =======================================
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
 Disallow: /secure/
-Disallow: /login/
-Disallow: /register/
 Disallow: /account/
 Disallow: /checkout/
-Disallow: /cart/
 
 # =======================================
-# Disallowed File Types
+# Allow Important Assets
 # =======================================
-Disallow: /*.json$
-Disallow: /*.xml$
-Disallow: /*.js$
-Disallow: /*.css$
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.woff$
+Allow: /*.woff2$
+Allow: /*.ttf$
+Allow: /*.eot$
+
+# =======================================
+# Disallowed Query Parameters
+# =======================================
 Disallow: /*?*
-Disallow: /*&
-Disallow: /*?s=
-Disallow: /*&s=
-Disallow: /*?search=
-Disallow: /*&search=
 
 # =======================================
 # Sitemap Location
