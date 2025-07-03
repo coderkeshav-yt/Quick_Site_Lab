@@ -14,11 +14,18 @@
     NODE_OPTIONS = "--openssl-legacy-provider"
   }
 
+# Redirect /services/index.html to /services
+[[redirects]]
+  from = "/services/index.html"
+  to = "/services"
+  status = 301
+  force = true
+
+# SPA fallback - must always be the last rule
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
 
 [[headers]]
   for = "/*"

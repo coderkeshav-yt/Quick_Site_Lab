@@ -48,7 +48,11 @@
     "test": "react-scripts test",
     "test:router": "node test-router.js",
     "fix:router": "node fix-router.js",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "seo:generate-sitemap": "node scripts/generate-sitemap.js",
+    "seo:generate-robots": "node scripts/generate-robots.js",
+    "seo:optimize": "npm run seo:generate-sitemap && npm run seo:generate-robots",
+    "postbuild": "npm run seo:optimize"
   },
   "eslintConfig": {
     "extends": [
@@ -74,6 +78,7 @@
     "@types/yup": "^0.29.14",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
+    "sitemap": "^8.0.0",
     "tailwindcss": "^3.3.0"
   }
 }

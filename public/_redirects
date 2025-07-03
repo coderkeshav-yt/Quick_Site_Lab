@@ -1,6 +1,9 @@
 # Single Page Application (SPA) Routing
 /*    /index.html   200
 
+# Redirect /services/index.html to /services
+/services/index.html    /services    301
+
 # Custom redirects (example)
 # /old-path    /new-path    301
 # /blog/:year/:month/:slug    /blog/:slug    301

@@ -8,6 +8,14 @@
     <loc>https://www.cybrida.in/</loc>
     <lastmod>2025-07-03</lastmod>
     <changefreq>daily</changefreq>
+  </url>
+  
+  <!-- Services -->
+  <url>
+    <loc>https://www.cybrida.in/services</loc>
+    <lastmod>2025-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <priority>1.0</priority>
   </url>
   
