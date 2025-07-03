@@ -3,20 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robots.txt Tester - Cybrida</title>
+    <title>Robots.txt Tester - Cybrida Web Development</title>
+    <meta name="description" content="Test and validate your robots.txt file to ensure search engines can properly crawl and index your website.">
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
+            --gray-100: #f8fafc;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-700: #334155;
+            --gray-900: #0f172a;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
-            max-width: 800px;
+            color: var(--gray-900);
+            background-color: #fff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container {
+            max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
-            color: #333;
         }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
         h1 {
-            color: #2b5797;
+            color: var(--primary);
+            font-size: 2.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: var(--gray-700);
+            font-size: 1.125rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .tester-container {
+            background-color: var(--gray-100);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .form-group {
             margin-bottom: 1.5rem;
         }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--gray-900);
+        }
+        
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        input[type="text"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        textarea {
+            min-height: 200px;
+            resize: vertical;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: white;
+            background-color: var(--primary);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .result-container {
+            margin-top: 2rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+            display: none;
+        }
+        
+        .result-header {
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .result-header i {
+            margin-right: 0.5rem;
+        }
+        
+        .result-success .result-header {
+            background-color: #ecfdf5;
+            color: #047857;
+            border-color: #a7f3d0;
+        }
+        
+        .result-error .result-header {
+            background-color: #fef2f2;
+            color: #b91c1c;
+            border-color: #fecaca;
+        }
+        
+        .result-warning .result-header {
+            background-color: #fffbeb;
+            color: #b45309;
+            border-color: #fde68a;
+        }
+        
+        .result-content {
+            padding: 1.5rem;
+            background-color: white;
+        }
+        
+        .result-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        
+        .result-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .result-label {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: var(--gray-900);
+        }
+        
+        .result-value {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            background-color: var(--gray-100);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            word-break: break-all;
+        }
+        
+        .result-value.allowed {
+            color: #047857;
+            background-color: #ecfdf5;
+        }
+        
+        .result-value.disallowed {
+            color: #b91c1c;
+            background-color: #fef2f2;
+        }
+        
+        .info-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 0.375rem 0.375rem 0;
+        }
+        
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 0.5rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
         .test {
             background: #f8f9fa;
             border-radius: 8px;
@@ -60,159 +305,391 @@
     </style>
 </head>
 <body>
-    <h1>Robots.txt Tester</h1>
-    <p>This tool helps you verify that your robots.txt file is correctly configured for search engines.</p>
-    
-    <div class="test">
-        <h2>1. Robots.txt Fetch Test</h2>
-        <p>Let's check if we can fetch your robots.txt file:</p>
-        <div id="fetch-test">Testing...</div>
+    <div class="container">
+        <header>
+            <h1>Robots.txt Tester</h1>
+            <p class="subtitle">Test and validate your robots.txt file to ensure search engines can properly crawl and index your website.</p>
+        </header>
+        
+        <div class="tester-container">
+            <h2 class="section-title">Current robots.txt</h2>
+            <div class="form-group">
+                <label for="robotsContent">Your robots.txt content:</label>
+                <textarea id="robotsContent" readonly>Loading robots.txt file...</textarea>
+            </div>
+            
+            <div class="info-box">
+                <p><strong>About robots.txt:</strong> This file tells search engine crawlers which URLs the crawler can access on your site. This is used mainly to avoid overloading your site with requests.</p>
+                <p>Use this tool to test if your robots.txt is correctly configured for search engines.</p>
+            </div>
+            
+            <h2 class="section-title">Test a URL</h2>
+            <div class="form-group">
+                <label for="testUrl">URL to test:</label>
+                <input type="text" id="testUrl" placeholder="https://www.cybrida.in/path" value="">
+                <p class="help-text">Enter the full URL you want to test against the robots.txt rules.</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="userAgent">User-Agent:</label>
+                <select id="userAgent">
+                    <option value="*">All User-Agents (*)</option>
+                    <option value="Googlebot">Googlebot (Google)</option>
+                    <option value="Bingbot">Bingbot (Microsoft Bing)</option>
+                    <option value="Slurp">Slurp (Yahoo)</option>
+                    <option value="DuckDuckBot">DuckDuckBot (DuckDuckGo)</option>
+                    <option value="Baiduspider">Baiduspider (Baidu)</option>
+                    <option value="Yandex">Yandex</option>
+                    <option value="Applebot">Applebot (Apple)</option>
+                    <option value="Twitterbot">Twitterbot (Twitter)</option>
+                    <option value="facebookexternalhit">Facebook External Hit</option>
+                    <option value="LinkedInBot">LinkedInBot</option>
+                    <option value="Pinterest">Pinterest</option>
+                </select>
+                <p class="help-text">Select the user-agent to test with. Different crawlers may have different rules.</p>
+            </div>
+            
+            <button id="testButton" class="btn">
+                <span id="buttonText">Test URL</span>
+                <span id="buttonLoading" class="loading hidden"></span>
+            </button>
+            
+            <div id="resultContainer" class="result-container">
+                <div class="result-header">
+                    <i id="resultIcon"></i>
+                    <span id="resultTitle">Test Result</span>
+                </div>
+                <div class="result-content">
+                    <div class="result-item">
+                        <div class="result-label">URL Tested:</div>
+                        <div id="testedUrl" class="result-value"></div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">User-Agent:</div>
+                        <div id="testedUserAgent" class="result-value"></div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Access:</div>
+                        <div id="accessResult" class="result-value"></div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Matching Rule:</div>
+                        <div id="matchingRule" class="result-value">-</div>
+                    </div>
+                    <div class="result-item" id="suggestionContainer" style="display: none;">
+                        <div class="result-label">Suggestion:</div>
+                        <div id="suggestionText" class="result-value"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tester-container">
+            <h2 class="section-title">Common Issues</h2>
+            <div class="common-issues">
+                <div class="issue">
+                    <h3>Blocking All Crawlers</h3>
+                    <pre>User-agent: *
+Disallow: /</pre>
+                    <p>This blocks all search engines from crawling your entire site. Only use this on staging/development environments.</p>
+                </div>
+                
+                <div class="issue">
+                    <h3>Allowing All Crawlers</h3>
+                    <pre>User-agent: *
+Allow: /</pre>
+                    <p>This allows all search engines to crawl your entire site. Make sure you don't have any sensitive information exposed.</p>
+                </div>
+                
+                <div class="issue">
+                    <h3>Missing Sitemap</h3>
+                    <p>Consider adding your sitemap to help search engines discover your content:</p>
+                    <pre>Sitemap: https://www.cybrida.in/sitemap.xml</pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tester-container">
+            <h2 class="section-title">Robots.txt Best Practices</h2>
+            <ul class="best-practices">
+                <li>Keep your robots.txt file in the root directory of your website</li>
+                <li>Use comments (lines starting with #) to document your rules</li>
+                <li>Test your robots.txt file after making changes</li>
+                <li>Don't use robots.txt to hide sensitive information (use authentication instead)</li>
+                <li>Submit your sitemap to search engines for better indexing</li>
+                <li>Use the robots.txt testing tool in Google Search Console for more detailed analysis</li>
+            </ul>
+        </div>
+        
+        <footer style="text-align: center; margin-top: 3rem; padding: 1.5rem; color: var(--gray-600); font-size: 0.875rem;">
+            <p>Robots.txt Tester Tool by <a href="https://www.cybrida.in" style="color: var(--primary); text-decoration: none;">Cybrida Web Development</a></p>
+            <p>Need help with your website's SEO? <a href="https://www.cybrida.in/contact" style="color: var(--primary); text-decoration: none;">Contact us</a> for professional SEO services.</p>
+        </footer>
     </div>
-    
-    <div class="test">
-        <h2>2. Critical Paths Check</h2>
-        <p>Verifying access to important website paths:</p>
-        <ul id="path-checks"></ul>
-    </div>
-    
-    <div class="test">
-        <h2>3. Sitemap Check</h2>
-        <p>Checking if your sitemap is properly referenced:</p>
-        <div id="sitemap-check">Checking...</div>
-    </div>
-    
-    <div class="test">
-        <h2>4. Common Issues</h2>
-        <div id="common-issues">Checking for common issues...</div>
-    </div>
-    
-    <a href="https://search.google.com/search-console" class="btn" target="_blank" rel="noopener">Open Google Search Console</a>
     
     <script>
-        // Test 1: Fetch robots.txt
-        fetch('/robots.txt')
-            .then(response => {
-                if (!response.ok) throw new Error('Failed to fetch');
-                return response.text();
-            })
-            .then(text => {
-                const fetchTest = document.getElementById('fetch-test');
-                fetchTest.innerHTML = `
-                    <p class="success">✓ Successfully fetched robots.txt</p>
-                    <pre>${escapeHtml(text)}</pre>
-                `;
-                
-                // Check for sitemap reference
-                const sitemapCheck = document.getElementById('sitemap-check');
-                if (text.toLowerCase().includes('sitemap:')) {
-                    const sitemapUrl = text.match(/sitemap:\s*(https?:\/\/[^\s]+)/i);
-                    if (sitemapUrl && sitemapUrl[1]) {
-                        sitemapCheck.innerHTML = `
-                            <p class="success">✓ Sitemap found: <a href="${sitemapUrl[1]}" target="_blank">${sitemapUrl[1]}</a></p>
-                        `;
-                    } else {
-                        sitemapCheck.innerHTML = `
-                            <p class="warning">⚠ Sitemap directive found but could not parse URL</p>
-                            <pre>${text.match(/sitemap:.*/i)[0]}</pre>
-                        `;
-                    }
-                } else {
-                    sitemapCheck.innerHTML = `
-                        <p class="error">✗ No sitemap directive found in robots.txt</p>
-                        <p>Add this line to your robots.txt: <code>Sitemap: https://www.cybrida.in/sitemap.xml</code></p>
-                    `;
-                }
-                
-                // Check for common issues
-                const commonIssues = [];
-                
-                // Check if CSS/JS are blocked
-                if (text.match(/disallow:\s*\/\.(js|css)\$/i)) {
-                    commonIssues.push({
-                        type: 'error',
-                        message: 'CSS and JS files should not be blocked in robots.txt as they are needed for proper page rendering.'
-                    });
-                }
-                
-                // Check for overly restrictive rules
-                if (text.match(/disallow:\s*\//i) && !text.match(/allow:\s*\//i)) {
-                    commonIssues.push({
-                        type: 'error',
-                        message: 'Root directory (/) is disallowed, which blocks the entire site. Add `Allow: /` to allow crawling.'
-                    });
-                }
-                
-                // Display common issues
-                const issuesContainer = document.getElementById('common-issues');
-                if (commonIssues.length === 0) {
-                    issuesContainer.innerHTML = '<p class="success">✓ No critical issues found in your robots.txt</p>';
-                } else {
-                    issuesContainer.innerHTML = `
-                        <p class="${commonIssues.some(i => i.type === 'error') ? 'error' : 'warning'}">
-                            Found ${commonIssues.length} issue${commonIssues.length > 1 ? 's' : ''}:
-                        </p>
-                        <ul>
-                            ${commonIssues.map(issue => 
-                                `<li class="${issue.type}">${issue.message}</li>`
-                            ).join('')}
-                        </ul>
-                    `;
-                }
-            })
-            .catch(error => {
-                document.getElementById('fetch-test').innerHTML = `
-                    <p class="error">✗ Failed to fetch robots.txt</p>
-                    <p>Make sure the file exists at the root of your domain: <code>https://www.cybrida.in/robots.txt</code></p>
-                    <p>Error: ${error.message}</p>
-                `;
-            });
-        
-        // Test 2: Check important paths
-        const pathsToCheck = [
-            '/',
-            '/sitemap.xml',
-            '/robots.txt',
-            '/products/source-code',
-            '/contact',
-            '/privacy-policy',
-            '/terms-of-service'
-        ];
-        
-        const pathChecks = document.getElementById('path-checks');
-        
-        pathsToCheck.forEach(path => {
-            const li = document.createElement('li');
-            li.id = `path-${path.replace(/[^a-z0-9]/g, '-')}`;
-            li.textContent = `Checking ${path}...`;
-            pathChecks.appendChild(li);
-            
-            fetch(path, { method: 'HEAD' })
-                .then(response => {
-                    const status = response.status;
-                    let statusText = status;
-                    let statusClass = '';
-                    
-                    if (status >= 200 && status < 300) {
-                        statusText = `✓ ${status} OK`;
-                        statusClass = 'success';
-                    } else if (status >= 300 && status < 400) {
-                        statusText = `↪ ${status} Redirect`;
-                        statusClass = 'warning';
-                    } else if (status === 404) {
-                        statusText = `✗ ${status} Not Found`;
-                        statusClass = 'error';
-                    } else if (status >= 400) {
-                        statusText = `⚠ ${status} Error`;
-                        statusClass = 'error';
-                    }
-                    
-                    li.innerHTML = `<span class="${statusClass}">${statusText}</span> - <code>${path}</code>`;
-                })
-                .catch(error => {
-                    li.innerHTML = `<span class="error">✗ Error</span> - <code>${path}</code> - ${error.message}`;
-                });
+        // DOM Elements
+        const robotsContent = document.getElementById('robotsContent');
+        const testUrlInput = document.getElementById('testUrl');
+        const userAgentSelect = document.getElementById('userAgent');
+        const testButton = document.getElementById('testButton');
+        const buttonText = document.getElementById('buttonText');
+        const buttonLoading = document.getElementById('buttonLoading');
+        const resultContainer = document.getElementById('resultContainer');
+        const resultTitle = document.getElementById('resultTitle');
+        const resultIcon = document.getElementById('resultIcon');
+        const testedUrl = document.getElementById('testedUrl');
+        const testedUserAgent = document.getElementById('testedUserAgent');
+        const accessResult = document.getElementById('accessResult');
+        const matchingRule = document.getElementById('matchingRule');
+        const suggestionContainer = document.getElementById('suggestionContainer');
+        const suggestionText = document.getElementById('suggestionText');
+
+        // Load robots.txt content on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchRobotsTxt();
+            setupEventListeners();
         });
-        
+
+        // Fetch robots.txt content
+        async function fetchRobotsTxt() {
+            try {
+                const response = await fetch('/robots.txt');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const text = await response.text();
+                robotsContent.value = text;
+            } catch (error) {
+                console.error('Error loading robots.txt:', error);
+                robotsContent.value = `# Error loading robots.txt: ${error.message}\n# Make sure the file exists at the root of your website.`;
+            }
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            testButton.addEventListener('click', testUrlAgainstRobotsTxt);
+            testUrlInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') testUrlAgainstRobotsTxt();
+            });
+        }
+
+        // Main function to test URL against robots.txt rules
+        async function testUrlAgainstRobotsTxt() {
+            // Reset UI
+            testButton.disabled = true;
+            buttonText.textContent = 'Testing...';
+            buttonLoading.classList.remove('hidden');
+            resultContainer.style.display = 'none';
+
+            try {
+                const url = testUrlInput.value.trim() || window.location.origin;
+                const userAgent = userAgentSelect.value;
+                
+                // Validate URL
+                let normalizedUrl;
+                try {
+                    const urlObj = new URL(url);
+                    normalizedUrl = urlObj.href;
+                } catch (e) {
+                    throw new Error('Please enter a valid URL (e.g., https://www.example.com/path)');
+                }
+
+                // Get robots.txt content
+                const robotsTxt = robotsContent.value;
+                if (!robotsTxt) throw new Error('No robots.txt content available');
+
+                // Parse robots.txt and test URL
+                const result = parseRobotsTxt(robotsTxt, userAgent, normalizedUrl);
+                
+                // Display results
+                displayResults(result, normalizedUrl, userAgent);
+                
+            } catch (error) {
+                showError(error.message);
+            } finally {
+                // Reset button state
+                testButton.disabled = false;
+                buttonText.textContent = 'Test URL';
+                buttonLoading.classList.add('hidden');
+            }
+        }
+
+        // Parse robots.txt and check if URL is allowed
+        function parseRobotsTxt(robotsTxt, userAgent, url) {
+            const lines = robotsTxt.split('\n');
+            const rules = [];
+            let currentUserAgent = '*';
+            let hasGlobalRules = false;
+            let hasSitemap = false;
+            let currentRules = [];
+
+            // Parse the robots.txt file
+            for (const line of lines) {
+                const trimmedLine = line.trim();
+                if (!trimmedLine || trimmedLine.startsWith('#')) continue;
+
+                const match = trimmedLine.match(/^([^:\s]+):\s*(.*)$/);
+                if (!match) continue;
+
+                const [_, key, value] = match;
+                const keyLower = key.trim().toLowerCase();
+                const valueTrimmed = value.trim();
+
+                if (keyLower === 'user-agent') {
+                    // Save previous rules if any
+                    if (currentRules.length > 0) {
+                        rules.push({
+                            userAgent: currentUserAgent,
+                            rules: [...currentRules]
+                        });
+                        currentRules = [];
+                    }
+                    currentUserAgent = valueTrimmed;
+                    if (currentUserAgent === '*') hasGlobalRules = true;
+                } else if (keyLower === 'allow' || keyLower === 'disallow') {
+                    currentRules.push({
+                        type: keyLower,
+                        path: valueTrimmed
+                    });
+                } else if (keyLower === 'sitemap') {
+                    hasSitemap = true;
+                }
+            }
+
+            // Add the last set of rules
+            if (currentRules.length > 0) {
+                rules.push({
+                    userAgent: currentUserAgent,
+                    rules: [...currentRules]
+                });
+            }
+
+            // Parse the URL to get the path
+            let path;
+            try {
+                const urlObj = new URL(url);
+                path = urlObj.pathname + (urlObj.search || '');
+            } catch (e) {
+                path = url;
+            }
+
+            // Check if the path is allowed
+            let isAllowed = true;
+            let matchingRule = null;
+            let applicableRules = [];
+
+            // Find all applicable rules (matching user agent or global)
+            for (const ruleSet of rules) {
+                if (ruleSet.userAgent === '*' || 
+                    ruleSet.userAgent.toLowerCase() === userAgent.toLowerCase() ||
+                    (userAgent === '*' && ruleSet.userAgent !== '*')) {
+                    applicableRules.push(...ruleSet.rules);
+                }
+            }
+
+            // Check each rule in order
+            for (const rule of applicableRules) {
+                let pattern = rule.path;
+                
+                // Handle empty disallow (allow all)
+                if (rule.type === 'disallow' && pattern === '') {
+                    isAllowed = true;
+                    matchingRule = rule;
+                    break;
+                }
+
+                // Convert pattern to regex
+                pattern = pattern
+                    .replace(/[.+?^${}()|[\]\\]/g, '\\$&')
+                    .replace(/\*/g, '.*');
+
+                // Handle $ for end of path
+                const isExactMatch = rule.path.endsWith('$');
+                if (isExactMatch) {
+                    pattern = '^' + pattern.slice(0, -1) + '$';
+                } else {
+                    pattern = '^' + pattern;
+                }
+
+                const regex = new RegExp(pattern, 'i');
+                if (regex.test(path)) {
+                    isAllowed = (rule.type === 'allow');
+                    matchingRule = rule;
+                }
+            }
+
+            // Generate suggestions
+            const suggestions = [];
+            if (!hasGlobalRules) {
+                suggestions.push('Consider adding global rules (User-agent: *) for crawlers without specific rules.');
+            }
+            
+            if (!hasSitemap) {
+                suggestions.push('Add a Sitemap directive to help search engines discover your content.');
+            }
+
+            return {
+                isAllowed,
+                rule: matchingRule,
+                suggestions,
+                hasSitemap
+            };
+        }
+
+        // Display test results
+        function displayResults(result, url, userAgent) {
+            // Update result elements
+            testedUrl.textContent = url;
+            testedUserAgent.textContent = userAgent === '*' ? 'All User-Agents (*)' : userAgent;
+            
+            if (result.isAllowed) {
+                resultContainer.className = 'result-container result-success';
+                resultTitle.textContent = 'Access Allowed';
+                resultIcon.innerHTML = '✓';
+                accessResult.textContent = 'This URL can be crawled by the selected user-agent';
+                accessResult.className = 'result-value allowed';
+            } else {
+                resultContainer.className = 'result-container result-error';
+                resultTitle.textContent = 'Access Blocked';
+                resultIcon.innerHTML = '✗';
+                accessResult.textContent = 'This URL is blocked from being crawled by the selected user-agent';
+                accessResult.className = 'result-value disallowed';
+            }
+            
+            // Show matching rule if available
+            if (result.rule) {
+                matchingRule.textContent = `${result.rule.type.toUpperCase()}: ${result.rule.path}`;
+            } else {
+                matchingRule.textContent = 'No specific rule matches this URL. Default access is allowed.';
+            }
+            
+            // Show suggestions if any
+            if (result.suggestions && result.suggestions.length > 0) {
+                suggestionContainer.style.display = 'block';
+                suggestionText.innerHTML = result.suggestions.join('<br><br>');
+            } else {
+                suggestionContainer.style.display = 'none';
+            }
+            
+            // Show result container
+            resultContainer.style.display = 'block';
+            resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Show error message
+        function showError(message) {
+            resultContainer.className = 'result-container result-error';
+            resultTitle.textContent = 'Error';
+            resultIcon.innerHTML = '!';
+            testedUrl.textContent = testUrlInput.value || 'Not specified';
+            testedUserAgent.textContent = userAgentSelect.options[userAgentSelect.selectedIndex].text;
+            accessResult.textContent = message;
+            accessResult.className = 'result-value';
+            matchingRule.textContent = '-';
+            suggestionContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+            resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
         // Helper function to escape HTML
         function escapeHtml(unsafe) {
             return unsafe

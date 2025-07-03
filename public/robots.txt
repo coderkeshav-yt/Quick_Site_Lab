@@ -11,6 +11,7 @@ Allow: /
 # Sitemap Location (for search engines)
 # =======================================
 Sitemap: https://www.cybrida.in/sitemap.xml
+Sitemap: https://www.cybrida.in/sitemap-blog.xml
 
 # =======================================
 # Disallowed Directories
