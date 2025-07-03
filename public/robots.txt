@@ -1,42 +1,118 @@
-# robots.txt for Cybrida
-# Last updated: 2025-07-01
+# robots.txt for Cybrida - Web Development & Digital Solutions
+# Last updated: 2025-07-02
 
-# Global rules
+# =======================================
+# Global Directives
+# =======================================
 User-agent: *
 Allow: /
+
+# =======================================
+# Disallowed Directories
+# =======================================
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
 Disallow: /secure/
-Disallow: /*.json$
-Disallow: /*?*
+Disallow: /login/
+Disallow: /register/
+Disallow: /account/
+Disallow: /checkout/
+Disallow: /cart/
 
-# Sitemap location
+# =======================================
+# Disallowed File Types
+# =======================================
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /*?*
+Disallow: /*&
+Disallow: /*?s=
+Disallow: /*&s=
+Disallow: /*?search=
+Disallow: /*&search=
+
+# =======================================
+# Sitemap Location
+# =======================================
 Sitemap: https://www.cybrida.in/sitemap.xml
 
-# Crawl-delay: 10  # Uncomment and adjust if needed to limit crawl rate
+# =======================================
+# Crawl Rate (requests per second)
+# =======================================
+# Default crawl rate is 1 request per second
+# Uncomment and adjust if needed
+# Crawl-delay: 1
 
-# Allow all web crawlers (unnecessary but explicit)
-User-agent: *
-Allow: /
-
-# Block specific bots if needed
-# User-agent: BadBot
-# Disallow: /
-
-# Allow media files to be crawled
+# =======================================
+# Image Search Directives
+# =======================================
 User-agent: Googlebot-Image
 Allow: /*.png$
 Allow: /*.jpg$
 Allow: /*.jpeg$
 Allow: /*.gif$
 Allow: /*.webp$
+Allow: /*.svg$
 
-# Allow ads bots (if using ads)
+# =======================================
+# Ad Bots
+# =======================================
 User-agent: Mediapartners-Google
 Allow: /
 
-# Development and staging environments (if applicable)
+# =======================================
+# Bad Bots Blocking
+# =======================================
+# Uncomment and add known bad bots
+# User-agent: BadBot
+# Disallow: /
+
+# =======================================
+# Development & Staging
+# =======================================
+# Uncomment in production
 # User-agent: *
 # Disallow: /staging/
 # Disallow: /dev/
+# Disallow: /test/
+
+# =======================================
+# Crawl Optimization
+# =======================================
+# Prevent crawling of infinite spaces
+Disallow: /*?*&
+Disallow: /*?*%20
+Disallow: /*?*+%20
+
+# Prevent crawling of admin pages that might be accessible
+Disallow: /*/admin/
+Disallow: /*/wp-admin/
+Disallow: /*/wp-login.php
+Disallow: /*/wp-register.php
+
+# =======================================
+# Allow All Search Engine Spiders
+# =======================================
+User-agent: *
+Allow: /$
+Allow: /sitemap.xml$
+Allow: /robots.txt$
+Allow: /*.css$
+Allow: /*.js$
+
+# =======================================
+# Host Directive
+# =======================================
+# Helps when you have multiple domains pointing to the same content
+# Replace with your primary domain
+Host: www.cybrida.in
+
+# =======================================
+# Clean Param
+# =======================================
+# Helps search engines understand which URL parameters don't affect content
+# Clean-param: ref /products/
+# Clean-param: source /blog/

@@ -49,6 +49,21 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.cybrida.in/" />
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="%PUBLIC_URL%/static/css/main.chunk.css" as="style" />
+    <link rel="preload" href="%PUBLIC_URL%/static/js/runtime-main.js" as="script" />
+    <link rel="preload" href="%PUBLIC_URL%/static/js/main.chunk.js" as="script" />
+    
+    <!-- Preconnect to important origins -->
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- DNS Prefetch for external domains -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -73,8 +88,17 @@
     </script>
 
     <!-- Favicon and App Icon -->
-    <link rel="icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
+    <meta name="theme-color" content="#2b5797" />
+    
+    <!-- Preload Web Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+    
     <!-- Additional Schema Markup for WebPage -->
     <script type="application/ld+json">
     {
@@ -98,8 +122,21 @@
     </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="text-align:center;padding:2rem;font-family:sans-serif">
+        <h1>JavaScript is disabled</h1>
+        <p>Please enable JavaScript to experience this website fully.</p>
+        <p>Or visit our <a href="https://www.cybrida.in/noscript">No-JavaScript version</a>.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/static/css/main.chunk.css" media="print" onload="this.media='all'" />
+    
+    <!-- Load non-critical scripts with defer -->
+    <script src="%PUBLIC_URL%/static/js/runtime-main.js" defer></script>
+    <script src="%PUBLIC_URL%/static/js/main.chunk.js" defer></script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
