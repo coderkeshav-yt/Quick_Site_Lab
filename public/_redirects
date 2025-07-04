@@ -1,5 +1,6 @@
 # Single Page Application (SPA) Routing
 /*    /index.html   200
+!/ads.txt   200
 
 # Redirect /services/index.html to /services
 /services/index.html    /services    301
