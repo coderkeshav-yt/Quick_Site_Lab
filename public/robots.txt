@@ -7,32 +7,7 @@
 User-agent: *
 Allow: /
 
-# Disallow direct access to static HTML files
-Disallow: /*.html$
-Disallow: /services/index.html
-
-# Sitemap
-Sitemap: https://cybrida.in/sitemap.xml
-
-# =======================================
-# Sitemap Location (for search engines)
-# =======================================
-Sitemap: https://www.cybrida.in/sitemap.xml
-Sitemap: https://www.cybrida.in/sitemap-blog.xml
-
-# =======================================
-# Disallowed Directories
-# =======================================
-Disallow: /admin/
-Disallow: /api/
-Disallow: /private/
-Disallow: /secure/
-Disallow: /account/
-Disallow: /checkout/
-
-# =======================================
 # Allow Important Assets
-# =======================================
 Allow: /*.js$
 Allow: /*.css$
 Allow: /*.png$
@@ -47,21 +22,22 @@ Allow: /*.ttf$
 Allow: /*.eot$
 
 # =======================================
-# Disallowed Query Parameters
+# Disallowed Directories & Patterns
 # =======================================
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /secure/
+Disallow: /account/
+Disallow: /checkout/
 Disallow: /*?*
-
-# =======================================
-# Sitemap Location
-# =======================================
-Sitemap: https://www.cybrida.in/sitemap.xml
-
-# =======================================
-# Crawl Rate (requests per second)
-# =======================================
-# Default crawl rate is 1 request per second
-# Uncomment and adjust if needed
-# Crawl-delay: 1
+Disallow: /*?*&
+Disallow: /*?*%20
+Disallow: /*?*+%20
+Disallow: /*/admin/
+Disallow: /*/wp-admin/
+Disallow: /*/wp-login.php
+Disallow: /*/wp-register.php
 
 # =======================================
 # Image Search Directives
@@ -81,55 +57,12 @@ User-agent: Mediapartners-Google
 Allow: /
 
 # =======================================
-# Bad Bots Blocking
-# =======================================
-# Uncomment and add known bad bots
-# User-agent: BadBot
-# Disallow: /
-
-# =======================================
-# Development & Staging
-# =======================================
-# Uncomment in production
-# User-agent: *
-# Disallow: /staging/
-# Disallow: /dev/
-# Disallow: /test/
-
-# =======================================
-# Crawl Optimization
-# =======================================
-# Prevent crawling of infinite spaces
-Disallow: /*?*&
-Disallow: /*?*%20
-Disallow: /*?*+%20
-
-# Prevent crawling of admin pages that might be accessible
-Disallow: /*/admin/
-Disallow: /*/wp-admin/
-Disallow: /*/wp-login.php
-Disallow: /*/wp-register.php
-
-# =======================================
-# Allow All Search Engine Spiders
-# =======================================
-User-agent: *
-Allow: /$
-Allow: /sitemap.xml$
-Allow: /robots.txt$
-Allow: /*.css$
-Allow: /*.js$
-
-# =======================================
 # Host Directive
 # =======================================
-# Helps when you have multiple domains pointing to the same content
-# Replace with your primary domain
-Host: www.cybrida.in
+Host: cybrida.in
 
 # =======================================
-# Clean Param
+# Sitemaps
 # =======================================
-# Helps search engines understand which URL parameters don't affect content
-# Clean-param: ref /products/
-# Clean-param: source /blog/
+Sitemap: https://cybrida.in/sitemap.xml
+Sitemap: https://cybrida.in/sitemap-blog.xml
