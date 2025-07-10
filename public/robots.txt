@@ -1,5 +1,5 @@
 # robots.txt for Cybrida - Web Development & Digital Solutions
-# Last updated: 2025-07-03
+# Last updated: 2025-07-10
 
 # =======================================
 # Global Directives
@@ -64,5 +64,8 @@ Host: cybrida.in
 # =======================================
 # Sitemaps
 # =======================================
-Sitemap: https://cybrida.in/sitemap.xml
+Sitemap: https://cybrida.in/sitemap-index.xml
+Sitemap: https://cybrida.in/sitemap-pages.xml
 Sitemap: https://cybrida.in/sitemap-blog.xml
+Sitemap: https://cybrida.in/sitemap-cases.xml
+Sitemap: https://cybrida.in/sitemap-products.xml

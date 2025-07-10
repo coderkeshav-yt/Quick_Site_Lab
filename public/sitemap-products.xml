@@ -3,22 +3,26 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <!-- Blog Index -->
+  <!-- Source Code Products -->
   <url>
-    <loc>https://cybrida.in/blog</loc>
+    <loc>https://cybrida.in/products/source-code</loc>
     <lastmod>2025-07-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
+  <!-- Add individual product pages here as they are created -->
   
-  <!-- Blog Posts -->
+  <!-- E-commerce Flow -->
   <url>
-    <loc>https://cybrida.in/blog/top-web-development-trends-2025</loc>
+    <loc>https://cybrida.in/thank-you</loc>
     <lastmod>2025-07-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
-  
-  <!-- Add more blog posts here as they are published -->
-  
+  <url>
+    <loc>https://cybrida.in/cancel</loc>
+    <lastmod>2025-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

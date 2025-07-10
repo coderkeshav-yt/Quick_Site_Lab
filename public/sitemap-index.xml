@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://cybrida.in/sitemap-pages.xml</loc>
+    <lastmod>2025-07-10</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://cybrida.in/sitemap-blog.xml</loc>
+    <lastmod>2025-07-10</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://cybrida.in/sitemap-cases.xml</loc>
+    <lastmod>2025-07-10</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://cybrida.in/sitemap-products.xml</loc>
+    <lastmod>2025-07-10</lastmod>
+  </sitemap>
+</sitemapindex>
