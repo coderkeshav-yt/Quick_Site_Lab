@@ -1,5 +1,5 @@
 # robots.txt for Cybrida - Web Development & Digital Solutions
-# Last updated: 2025-07-10
+# Last updated: 2025-07-11
 
 # =======================================
 # Global Directives
@@ -64,8 +64,32 @@ Host: cybrida.in
 # =======================================
 # Sitemaps
 # =======================================
+Sitemap: https://cybrida.in/sitemap.xml
 Sitemap: https://cybrida.in/sitemap-index.xml
 Sitemap: https://cybrida.in/sitemap-pages.xml
 Sitemap: https://cybrida.in/sitemap-blog.xml
 Sitemap: https://cybrida.in/sitemap-cases.xml
 Sitemap: https://cybrida.in/sitemap-products.xml
+
+# =======================================
+# Crawl Delay (if needed for server load)
+# =======================================
+# Crawl-delay: 10
+
+# =======================================
+# Allow All Important Directories
+# =======================================
+Allow: /$
+Allow: /sitemap*.xml
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.woff$
+Allow: /*.woff2$
+Allow: /*.ttf$
+Allow: /*.eot$
