@@ -30,6 +30,7 @@ Disallow: /private/
 Disallow: /secure/
 Disallow: /account/
 Disallow: /checkout/
+Disallow: /nav.html
 Disallow: /*?*
 Disallow: /*?*&
 Disallow: /*?*%20
