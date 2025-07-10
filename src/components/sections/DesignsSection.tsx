@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiFigma, FiExternalLink, FiArrowRight } from 'react-icons/fi';
 import { SiFigma } from 'react-icons/si';
+import { Link } from 'react-router-dom';
 
 const designs = [
   {
@@ -125,15 +126,13 @@ const DesignsSection: React.FC = () => {
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <a
-            href="https://www.figma.com/@launchory"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/figma-designs"
             className="group inline-flex items-center px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300"
           >
             <span>Explore All Designs</span>
             <FiArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

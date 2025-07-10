@@ -28,6 +28,7 @@ import DigitalPetStoreCaseStudy from './pages/case-studies/DigitalPetStoreCaseSt
 import LandingPageCaseStudy from './pages/case-studies/LandingPageCaseStudy';
 import DevelopmentProgress from './pages/DevelopmentProgress';
 import BlogPost from './pages/blog/BlogPost';
+import FigmaDesigns from './pages/FigmaDesigns';
 import { AuthProvider } from './contexts/AuthContext';
 import './index.css';
 import './App.css';
@@ -65,6 +66,7 @@ const App: React.FC = () => {
               <Route path="/case-studies/digital-pet-store" component={DigitalPetStoreCaseStudy} />
               <Route path="/case-studies/landing-page" component={LandingPageCaseStudy} />
               <Route path="/development-progress" component={DevelopmentProgress} />
+              <Route path="/figma-designs" component={FigmaDesigns} />
               <Route path="/blog/:id" component={BlogPost} />
             </Switch>
           </div>

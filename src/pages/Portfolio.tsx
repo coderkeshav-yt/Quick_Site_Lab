@@ -46,7 +46,7 @@ const Portfolio: React.FC = () => {
     return () => clearTimeout(timer);
   }, [filter, industryFilter]);
   
-  // Sample projects data
+  // Projects data matching the home page
   const projects: Project[] = [
     {
       id: 1,
@@ -54,34 +54,34 @@ const Portfolio: React.FC = () => {
       category: "web",
       industry: "retail",
       image: portfolio1,
-      description: "A sophisticated e-commerce platform with advanced filtering, seamless payment integration, and personalized recommendation engine that increased conversion rates by 35%.",
-      client: "StyleHub Fashion",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe", "TailwindCSS"],
-      link: "https://stylehub-demo.launchory.com",
-      caseStudyLink: "/case-studies/financial-dashboard",
+      description: "A modern e-commerce platform with advanced filtering, payment integration, and personalized recommendations.",
+      client: "Natural Puff",
+      technologies: ["React", "Node.js", "MongoDB", "Razorpay"],
+      link: "https://www.naturalpuff.com/",
+      caseStudyLink: "/case-studies/ecommerce",
       year: 2024,
       results: [
-        "Increased conversion rate by 35%",
-        "Reduced cart abandonment by 25%",
-        "Improved page load speed by 60%"
+        "Advanced filtering system",
+        "Seamless payment integration",
+        "Personalized recommendations"
       ]
     },
     {
       id: 2,
-      title: "Real Estate Application",
-      category: "mobile",
-      industry: "real-estate",
+      title: "Gym Website",
+      category: "web",
+      industry: "fitness",
       image: portfolio2,
-      description: "Premium mobile application for real estate listings with interactive maps, virtual tours, and mortgage calculator. Seamless experience across iOS and Android.",
-      client: "HomeQuest Properties",
-      technologies: ["React Native", "Firebase", "Google Maps API", "AR Kit"],
-      link: "https://homequest-demo.launchory.com",
-      caseStudyLink: "/case-studies/financial-dashboard",
-      year: 2023,
+      description: "A comprehensive gym website with class schedules, membership plans, and trainer profiles.",
+      client: "Be in Shape",
+      technologies: ["React", "Node.js", "Vite", "Tailwind CSS"],
+      link: "https://gymweb-zeta.vercel.app/",
+      caseStudyLink: "/case-studies/gym",
+      year: 2024,
       results: [
-        "50,000+ downloads in first month",
-        "4.8/5 average app store rating",
-        "28% increase in lead generation"
+        "Class schedule system",
+        "Membership management",
+        "Trainer profiles"
       ]
     },
     {
@@ -90,124 +90,70 @@ const Portfolio: React.FC = () => {
       category: "web",
       industry: "finance",
       image: portfolio3,
-      description: "Interactive dashboard for financial data visualization and analysis with real-time updates and predictive analytics powered by machine learning algorithms.",
-      client: "InvestWise Financial",
-      technologies: ["React", "TypeScript", "D3.js", "Node.js", "PostgreSQL"],
+      description: "Interactive dashboard for financial data visualization and analysis with real-time updates and predictive analytics.",
+      client: "Market Pulse",
+      technologies: ["Vue.js", "D3.js", "Express", "PostgreSQL"],
       link: "https://market-pulse-three.vercel.app/",
       caseStudyLink: "/case-studies/financial-dashboard",
       year: 2024,
       results: [
-        "Reduced data analysis time by 75%",
-        "Improved forecast accuracy by 40%",
-        "Automated reporting saved 20 hours/week"
+        "Real-time data visualization",
+        "Predictive analytics",
+        "Interactive charts"
       ]
     },
     {
       id: 4,
-      title: "Premium Fitness Tracker",
+      title: "Digital Pet Store",
       category: "mobile",
-      industry: "health",
-      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1716648342/fitness-app_mzc4u9.jpg",
-      description: "Elegant mobile app for tracking workouts, nutrition, and health metrics with personalized AI coaching and social features.",
-      client: "FitLife Health",
-      technologies: ["Flutter", "Firebase", "HealthKit", "Google Fit API", "TensorFlow Lite"],
-      link: "https://fitlife-demo.launchory.com",
-      caseStudyLink: "/case-studies/financial-dashboard",
-      year: 2023,
+      industry: "pets",
+      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149235/PET_mtepca.jpg",
+      description: "Mobile app for tracking workouts, nutrition, and health metrics with personalized coaching and social features.",
+      client: "Pawfectly Yours",
+      technologies: ["React", "Firebase", "Node.js", "Stripe"],
+      link: "https://pawfectly-yours.vercel.app/",
+      caseStudyLink: "/case-studies/digital-pet-store",
+      year: 2024,
       results: [
-        "85% user retention after 3 months",
-        "Users reported 32% better workout consistency",
-        "Featured in App Store's 'Apps We Love'"
+        "Pet health tracking",
+        "Nutrition management",
+        "Social features"
       ]
     },
     {
       id: 5,
-      title: "Luxury Travel Blog",
+      title: "Landing Page",
       category: "web",
-      industry: "travel",
-      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1716648342/travel-blog_xsfgdq.jpg",
-      description: "Content-focused travel blog with custom CMS, interactive maps, and social sharing integration for a premium travel experience company.",
-      client: "Wanderlust Adventures",
-      technologies: ["Next.js", "Sanity CMS", "Tailwind CSS", "Mapbox", "Cloudinary"],
-      link: "https://wanderlust-demo.launchory.com",
+      industry: "marketing",
+      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149186/LAND_vzb2pe.jpg",
+      description: "Content-focused travel blog with custom CMS, interactive maps, and social sharing integration.",
+      client: "Cybrida",
+      technologies: ["Next.js", "Vue.js", "Tailwind CSS", "Webflow"],
+      link: "https://landing-page-olive-five-82.vercel.app/",
       caseStudyLink: "/case-studies/landing-page",
       year: 2024,
       results: [
-        "300% increase in organic traffic",
-        "Conversion rate from reader to customer up 15%",
-        "Average session duration increased to 4.5 minutes"
+        "Custom CMS integration",
+        "Interactive maps",
+        "Social sharing"
       ]
     },
     {
       id: 6,
       title: "Restaurant Ordering System",
       category: "web",
-      industry: "hospitality",
-      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1716648343/restaurant-app_j5f1zs.jpg",
-      description: "Sophisticated online ordering system for high-end restaurants with real-time updates, table reservations, and loyalty program.",
-      client: "Gourmet Dining Group",
-      technologies: ["React", "Node.js", "Socket.io", "Stripe", "Redis"],
-      link: "https://gourmet-demo.launchory.com",
-      caseStudyLink: "/case-studies/financial-dashboard",
-      year: 2023,
-      results: [
-        "Increased average order value by 22%",
-        "Reduced wait time by 35%",
-        "Loyalty program saw 68% opt-in rate"
-      ]
-    },
-    {
-      id: 7,
-      title: "Telemedicine Platform",
-      category: "web",
-      industry: "health",
-      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1716648343/telemedicine_txfrih.jpg",
-      description: "Secure and HIPAA-compliant telemedicine platform with video consultations, prescription management, and patient records.",
-      client: "MedConnect Health",
-      technologies: ["React", "WebRTC", "Node.js", "MongoDB", "AWS"],
-      link: "https://medconnect-demo.launchory.com",
-      caseStudyLink: "/case-studies/financial-dashboard",
+      industry: "food",
+      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1750149189/RESTAURANT_z3klfi.webp",
+      description: "Online ordering system for restaurants with real-time updates, table reservations, and loyalty program.",
+      client: "Bawarchi restaurant",
+      technologies: ["React", "Node.js", "Socket.io", "Stripe"],
+      link: "#",
+      caseStudyLink: "/development-progress",
       year: 2024,
       results: [
-        "Facilitated 10,000+ virtual consultations monthly",
-        "Reduced patient wait times by 65%",
-        "98% patient satisfaction rating"
-      ]
-    },
-    {
-      id: 8,
-      title: "Investment Portfolio App",
-      category: "mobile",
-      industry: "finance",
-      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1716648342/investment-app_wbwxp4.jpg",
-      description: "Sophisticated mobile application for managing investment portfolios with real-time market data, personalized alerts, and AI-driven recommendations.",
-      client: "WealthWise Investments",
-      technologies: ["React Native", "Redux", "Firebase", "Alpha Vantage API"],
-      link: "https://wealthwise-demo.launchory.com",
-      caseStudyLink: "/case-studies/financial-dashboard",
-      year: 2023,
-      results: [
-        "Assets under management grew by $50M in 6 months",
-        "User engagement increased by 45%",
-        "Ranked #3 in Finance category in App Store"
-      ]
-    },
-    {
-      id: 9,
-      title: "Luxury Hotel Booking Platform",
-      category: "web",
-      industry: "hospitality",
-      image: "https://res.cloudinary.com/dlvxjnycr/image/upload/v1716648342/hotel-booking_khp2xj.jpg",
-      description: "Premium hotel booking platform featuring immersive virtual tours, AI-powered concierge, and personalized travel recommendations.",
-      client: "Elite Stays International",
-      technologies: ["Next.js", "GraphQL", "PostgreSQL", "Stripe", "Three.js"],
-      link: "https://elitestays-demo.launchory.com",
-      caseStudyLink: "/case-studies/financial-dashboard",
-      year: 2024,
-      results: [
-        "Booking conversion rate increased to 12%",
-        "Average booking value increased by 28%",
-        "Customer retention improved by 40%"
+        "Real-time order updates",
+        "Table reservation system",
+        "Loyalty program"
       ]
     }
   ];
