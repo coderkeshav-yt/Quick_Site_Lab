@@ -15,20 +15,13 @@
     <link rel="canonical" href="https://cybrida.in/" />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/my-favicon/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="/my-favicon/favicon-16x16.png" sizes="16x16" />
-    <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
-    <meta name="msapplication-TileImage" content="/my-favicon/mstile-144x144.png" />
+    <link rel="icon" type="image/png" href="%PUBLIC_URL%/my-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/my-favicon/favicon.svg" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/my-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/my-favicon/apple-touch-icon.png" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="manifest" href="/my-favicon/site.webmanifest" />
-    
-    <!-- Prevent indexing of development environment -->
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="manifest" href="%PUBLIC_URL%/my-favicon/site.webmanifest" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -173,13 +166,7 @@
         "https://twitter.com/cybrida",
         "https://www.linkedin.com/company/cybrida",
         "https://www.instagram.com/cybrida"
-      ],
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "telephone": "+1-555-555-5555",
-        "contactType": "customer service",
-        "availableLanguage": "English"
-      }]
+      ]
     },
     {
       "@context": "https://schema.org",
@@ -211,56 +198,7 @@
         <p>Or visit our <a href="https://www.cybrida.in/noscript">No-JavaScript version</a>.</p>
       </div>
     </noscript>
-    
-    <!-- Main Navigation -->
-    <header id="main-nav">
-      <!-- Navigation will be loaded here by seo-helper.js -->
-      <div class="loading-nav">Loading navigation...</div>
-    </header>
-    
-    <!-- Main Content -->
-    <main>
-      <div id="root"></div>
-    </main>
-    
-    <!-- Footer -->
-    <footer>
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/services">Our Services</a></li>
-            <li><a href="/portfolio">Portfolio</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Services</h3>
-          <ul>
-            <li><a href="/services/web-development">Web Development</a></li>
-            <li><a href="/services/digital-marketing">Digital Marketing</a></li>
-            <li><a href="/services/mobile-apps">Mobile Apps</a></li>
-            <li><a href="/services/seo">SEO Services</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Legal</h3>
-          <ul>
-            <li><a href="/privacy-policy">Privacy Policy</a></li>
-            <li><a href="/terms-of-service">Terms of Service</a></li>
-            <li><a href="/cookie-policy">Cookie Policy</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Cybrida. All rights reserved.</p>
-      </div>
-    </footer>
-    
-    <!-- Load SEO Helper -->
-    <script src="/js/seo-helper.js" defer></script>
+    <div id="root"></div>
     
     <!-- Load non-critical CSS asynchronously -->
     <link rel="stylesheet" href="/static/css/main.chunk.css" media="print" onload="this.media='all'" />
