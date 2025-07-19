@@ -44,9 +44,18 @@ const designs = [
     link: 'https://www.figma.com/proto/2mzbMMIGUcgHfeEBm2qt7q/Pringles-Potato-Crisps-design?node-id=2-69&p=f&t=HAawKHwKZEJbdOvO-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A69',
     preview: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1752162204/chips_z1cxex.png'
   },
+  {
+    id: 6,
+    title: 'Royal Fashion Slider App',
+    description: 'Interactive fashion showcase with smooth animations and product discovery',
+    category: 'Mobile App',
+    link: 'https://www.figma.com/proto/MVXd7Z79KcS9KuFzP2KBym/Runway-Fashion-Slider-App--Community-?page-id=0%3A1&node-id=0-2577&p=f&viewport=544%2C104%2C0.13&t=NU1aQpVCHWuMmr47-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=0%3A2621',
+    preview: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1752941999/Untitled_design_2_ngcfoc.png',
+    mostRated: true
+  },
 ];
 
-const DesignCard = ({ design }: { design: typeof designs[0] }) => (
+const DesignCard = ({ design }: { design: typeof designs[0] & { mostRated?: boolean } }) => (
   <motion.div
     className="group bg-white dark:bg-gray-800/50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50 h-full flex flex-col"
     whileHover={{ y: -5 }}
@@ -78,9 +87,16 @@ const DesignCard = ({ design }: { design: typeof designs[0] }) => (
     </div>
     <div className="p-6 flex flex-col flex-grow">
       <div className="flex items-start justify-between mb-3">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-          {design.title}
-        </h3>
+        <div>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+            {design.title}
+          </h3>
+          {design.mostRated && (
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200 mt-1">
+              ⭐ Most Rated
+            </span>
+          )}
+        </div>
         <SiFigma className="h-5 w-5 text-pink-500 mt-1" />
       </div>
       <p className="text-gray-600 dark:text-gray-300 mb-5 leading-relaxed flex-grow">
