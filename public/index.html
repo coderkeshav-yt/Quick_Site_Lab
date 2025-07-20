@@ -111,13 +111,78 @@
   </head>
   <body>
     <noscript>
-      <div style="text-align:center;padding:2rem;font-family:sans-serif">
-        <h1>JavaScript is disabled</h1>
-        <p>Please enable JavaScript to experience this website fully.</p>
-        <p>Or visit our <a href="https://www.cybrida.in/noscript">No-JavaScript version</a>.</p>
-      </div>
+      <!-- SEO-friendly fallback content -->
+      <header style="background:#2b5797;color:white;padding:20px;text-align:center">
+        <h1>Cybrida – Web Development & Digital Solutions</h1>
+        <p>Leading web development agency creating modern, responsive websites</p>
+      </header>
+      
+      <main style="max-width:1000px;margin:0 auto;padding:20px;font-family:sans-serif;line-height:1.6">
+        <section>
+          <h2>Welcome to Cybrida</h2>
+          <p>We are a leading web development agency specializing in creating modern, responsive websites and digital experiences for businesses of all sizes. Our team of expert developers and designers work together to deliver exceptional results.</p>
+        </section>
+        
+        <section>
+          <h2>Our Services</h2>
+          <ul>
+            <li><strong>Custom Web Development</strong> - Tailored solutions for your business needs</li>
+            <li><strong>Responsive Web Design</strong> - Mobile-first approach for all devices</li>
+            <li><strong>E-commerce Solutions</strong> - Online stores that convert visitors to customers</li>
+            <li><strong>Web Applications</strong> - Complex applications built with modern technologies</li>
+            <li><strong>SEO Optimization</strong> - Get found by your target audience</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>Why Choose Cybrida?</h2>
+          <p>With years of experience in web development, we understand what it takes to create successful online experiences. We combine technical expertise with creative design to deliver websites that not only look great but also perform exceptionally.</p>
+          
+          <ul>
+            <li>✅ Expert team of developers and designers</li>
+            <li>✅ Modern, responsive designs</li>
+            <li>✅ SEO-optimized from day one</li>
+            <li>✅ Fast loading times</li>
+            <li>✅ Ongoing support and maintenance</li>
+            <li>✅ Competitive pricing</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>Get Started Today</h2>
+          <p>Ready to take your online presence to the next level? Contact us today for a free consultation.</p>
+          <p><strong>Email:</strong> <a href="mailto:contact@cybrida.in">contact@cybrida.in</a></p>
+          <p><strong>Website:</strong> <a href="https://cybrida.in">https://cybrida.in</a></p>
+        </section>
+        
+        <nav style="margin:40px 0;text-align:center">
+          <a href="/about.html" style="color:#2b5797;margin:0 10px">About Us</a> |
+          <a href="/services" style="color:#2b5797;margin:0 10px">Services</a> |
+          <a href="/blog" style="color:#2b5797;margin:0 10px">Blog</a> |
+          <a href="/privacy-policy.html" style="color:#2b5797;margin:0 10px">Privacy Policy</a> |
+          <a href="/terms-of-service.html" style="color:#2b5797;margin:0 10px">Terms</a>
+        </nav>
+      </main>
+      
+      <footer style="background:#f8f9fa;padding:20px;text-align:center;margin-top:40px">
+        <p>&copy; 2025 Cybrida. All rights reserved. | Web Development & Digital Solutions</p>
+      </footer>
     </noscript>
-    <div id="root"></div>
+    
+    <!-- Main React app container -->
+    <div id="root">
+      <!-- Pre-rendered content for better SEO (will be replaced by React) -->
+      <div id="prerendered-content" style="display:none">
+        <h1>Cybrida – Web Development & Digital Solutions</h1>
+        <p>Leading web development agency creating modern, responsive websites and digital experiences for businesses of all sizes.</p>
+        <nav>
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/blog">Blog</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </div>
+    </div>
     
     <!-- Load non-critical CSS asynchronously -->
     <link rel="stylesheet" href="/static/css/main.chunk.css" media="print" onload="this.media='all'" />

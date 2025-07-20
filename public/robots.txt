@@ -7,9 +7,22 @@
 User-agent: *
 Allow: /
 
-# Disallow direct access to static HTML files
-Disallow: /*.html$
-Disallow: /services/index.html
+# Allow important HTML pages
+Allow: /about.html
+Allow: /privacy-policy.html
+Allow: /terms-of-service.html
+Allow: /home.html
 
-# Sitemap
+# Disallow admin and development files
+Disallow: /health-check.html
+Disallow: /static/
+Disallow: /.well-known/
+Disallow: /build/
+Disallow: /node_modules/
+
+# Crawl delay (optional - be respectful)
+Crawl-delay: 1
+
+# Sitemaps
 Sitemap: https://cybrida.in/sitemap.xml
+Sitemap: https://cybrida.in/sitemap-index.xml

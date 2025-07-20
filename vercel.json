@@ -9,8 +9,42 @@
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/favicon.ico", "dest": "/favicon.ico" },
     { "src": "/manifest.json", "dest": "/manifest.json" },
+    { "src": "/robots.txt", "dest": "/robots.txt" },
+    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
+    { "src": "/sitemap-index.xml", "dest": "/sitemap-index.xml" },
+    { "src": "/ads.txt", "dest": "/ads.txt" },
+    { "src": "/privacy-policy.html", "dest": "/privacy-policy.html" },
+    { "src": "/terms-of-service.html", "dest": "/terms-of-service.html" },
+    { "src": "/about.html", "dest": "/about.html" },
+    { "src": "/home.html", "dest": "/home.html" },
+    { "src": "/health-check.html", "dest": "/health-check.html" },
+    { "src": "/googlee1f44b8b503dc1df.html", "dest": "/googlee1f44b8b503dc1df.html" },
+    { "src": "/(.+\\.(css|js|ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|webp|mp4|webm|ogg|mp3|wav|flac|aac|txt|xml|json|pdf))", "dest": "/$1" },
+    { "src": "/privacy-policy", "dest": "/privacy-policy.html" },
+    { "src": "/terms-of-service", "dest": "/terms-of-service.html" },
+    { "src": "/about", "dest": "/about.html" },
     { "src": "/(.+)", "dest": "/index.html" },
-    { "src": "/", "dest": "/index.html" }
+    { "src": "/", "dest": "/home.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.html)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
   ],
   "env": {
     "CI": "false",
