@@ -6,6 +6,7 @@ import ProcessSection from '../components/sections/ProcessSection';
 import PortfolioSection from '../components/sections/PortfolioSection';
 import DesignsSection from '../components/sections/DesignsSection';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
+import VideoTestimonialSection from '../components/sections/VideoTestimonialSection';
 import BlogSection from '../components/sections/BlogSection';
 import ClientsSection from '../components/sections/ClientsSection';
 import FaqSection from '../components/sections/FaqSection';
@@ -45,6 +46,7 @@ const HomePage: React.FC = () => {
       <PortfolioSection />
       <DesignsSection />
       <TestimonialsSection />
+      <VideoTestimonialSection />
       <ClientsSection />
       <BlogSection />
       <FaqSection />
