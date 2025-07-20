@@ -1,5 +1,5 @@
 # robots.txt for Cybrida - Web Development & Digital Solutions
-# Last updated: 2025-07-10
+# Last updated: 2025-07-20
 
 # =======================================
 # Global Directives
@@ -7,65 +7,9 @@
 User-agent: *
 Allow: /
 
-# Allow Important Assets
-Allow: /*.js$
-Allow: /*.css$
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.gif$
-Allow: /*.svg$
-Allow: /*.webp$
-Allow: /*.woff$
-Allow: /*.woff2$
-Allow: /*.ttf$
-Allow: /*.eot$
+# Disallow direct access to static HTML files
+Disallow: /*.html$
+Disallow: /services/index.html
 
-# =======================================
-# Disallowed Directories & Patterns
-# =======================================
-Disallow: /admin/
-Disallow: /api/
-Disallow: /private/
-Disallow: /secure/
-Disallow: /account/
-Disallow: /checkout/
-Disallow: /*?*
-Disallow: /*?*&
-Disallow: /*?*%20
-Disallow: /*?*+%20
-Disallow: /*/admin/
-Disallow: /*/wp-admin/
-Disallow: /*/wp-login.php
-Disallow: /*/wp-register.php
-
-# =======================================
-# Image Search Directives
-# =======================================
-User-agent: Googlebot-Image
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.gif$
-Allow: /*.webp$
-Allow: /*.svg$
-
-# =======================================
-# Ad Bots
-# =======================================
-User-agent: Mediapartners-Google
-Allow: /
-
-# =======================================
-# Host Directive
-# =======================================
-Host: cybrida.in
-
-# =======================================
-# Sitemaps
-# =======================================
-Sitemap: https://cybrida.in/sitemap-index.xml
-Sitemap: https://cybrida.in/sitemap-pages.xml
-Sitemap: https://cybrida.in/sitemap-blog.xml
-Sitemap: https://cybrida.in/sitemap-cases.xml
-Sitemap: https://cybrida.in/sitemap-products.xml
+# Sitemap
+Sitemap: https://cybrida.in/sitemap.xml
