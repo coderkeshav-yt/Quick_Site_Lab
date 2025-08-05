@@ -53,6 +53,14 @@ const designs = [
     preview: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1752941999/Untitled_design_2_ngcfoc.png',
     mostRated: true
   },
+  {
+    id: 7,
+    title: 'Modern UI/UX Dashboard',
+    description: 'Clean and modern dashboard interface with data visualization and user management',
+    category: 'Web App',
+    link: 'https://www.figma.com/proto/RxcWXr7KkWy74ZStA1Cy6m/Untitled?page-id=0%3A1&node-id=1-2&viewport=265%2C255%2C0.23&t=aQin4lz01rJg797O-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=38%3A54',
+    preview: 'https://res.cloudinary.com/dlvxjnycr/image/upload/v1754377511/k_muh9ch.png'
+  },
 ];
 
 const DesignCard = ({ design }: { design: typeof designs[0] & { mostRated?: boolean } }) => (
